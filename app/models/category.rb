@@ -1,6 +1,8 @@
 class Category < ActiveRecord::Base
   has_and_belongs_to_many :jobs
 
+
+
 # def get_sorted_jobs
 #       self.jobs.sort_by do |j|
 #           j.get_upvotes.size
