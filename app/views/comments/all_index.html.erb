@@ -1,0 +1,8 @@
+<h1>Comments for each user</h1>
+
+
+<ul>
+  <%= @current_user.comments.each do |c| %>
+  <li><%= c.body %></li>
+  <% end %>
+</ul>

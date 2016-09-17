@@ -1,0 +1,27 @@
+<% if comment.user %>
+
+
+    <h5 class="job-head">Post by: <%= link_to comment.user.name, "/users/#{comment.user.id}" %> <%= image_tag comment.user.image %>
+    </h5>
+
+
+
+
+    <p><%= comment.body %> </p>
+    <p>Created:
+      <%= time_ago_in_words(comment.created_at) %> ago.
+  <% end %>
+
+<hr>
+
+  <% if comment.user == @current_user %>
+
+    <%= form_for([@job, comment]) do |f| %>
+        <%= f.text_area :body %> <br>
+        <input class="button" type="submit" value="EDIT">
+        <a class="button" <%= link_to 'Delete Comment', ([@job, comment]), method: :delete, data: { confirm: 'Are you sure?'} %></a>
+
+    <% end %>
+  <% end %>
+
+<% end %>
