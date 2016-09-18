@@ -1,4 +1,8 @@
-
+      <div class="controls">
+       <%= link_to "All jobs", jobs_path %>
+       <%= link_to "Edit work", edit_job_path( @job.id ) %>
+       <%= link_to "Delete work", @job, :method => :delete, :data => { :confirm => "Are you sure?" } %>
+      </div>
       <p>Job Title: <%= @job.task_title %></p>
       <%= image_tag(@job.images ) %>
       <p>Description: <%= @job.task_description %></p>
@@ -7,4 +11,7 @@
       <p>Time of Job: <%= @job.start_time %></p>
       <p>No. of people Required: <%= @job.workers_required %></p>
       <p>Budget: <%= "$#{@job.budget}" %></p>
-      <p>Job Posted By: <%= "#{@job.user.name}" %></p>
+
+      <% if @job.user %>
+        <p>Job Posted By: <%= link_to(@job.user.name, @job.user) %></p>
+      <% end %>
