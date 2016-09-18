@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:name, :category_id)
+      params.require(:user).permit(:name, :category_id, :job_id)
     end
 
 end
