@@ -9,8 +9,8 @@ class JobsController < ApplicationController
     end
 
     def create
-      job = Job.create( job_params )
-      redirect_to "/jobs/#{job.id}"
+      job = Job.create job_params
+      redirect_to job
     end
 
     def edit
@@ -25,6 +25,7 @@ class JobsController < ApplicationController
 
     def show
       @job = Job.find params[:id]
+      @comment = @job.comments.build(:job => @job)
     end
 
     def destroy
@@ -35,6 +36,6 @@ class JobsController < ApplicationController
 
     private
     def job_params
-      params.require(:job).permit(:task_title, :task_description, :task_location, :due_date, :start_time, :workers_required, :budget, :images )
+      params.require(:job).permit(:task_title, :task_description, :task_location, :due_date, :start_time, :workers_required, :budget, :images, :user_id )
     end
 end
