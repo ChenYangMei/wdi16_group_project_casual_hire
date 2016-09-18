@@ -8,8 +8,26 @@
 
 User.destroy_all
 u1 = User.create :name => "Andrew", :email => "andrew@ga.co", :password => "chicken", :password_confirmation => "chicken", :admin => true
-u2 = User.create :name => "Arpon", :email => "arpon@ga.co", :password => "chicken", :password_confirmation => "chicken"
+u2 = User.create :name => "Arpan", :email => "arpan@ga.co", :password => "chicken", :password_confirmation => "chicken"
 u3 = User.create :name => "Yangmei", :email => "yangmei@ga.co", :password => "chicken", :password_confirmation => "chicken"
+
+p "Total users :#{User.all.count}"
+
+Job.destroy_all
+j1 = Job.create :task_title =>"Handyman", :task_description =>"Change all the taps",     :task_location => "Penrith", :due_date => "2016/09/24", :start_time => "3:45 PM", :workers_required => 1, :budget => 45.34, :images => "http://www.yourrepair.co.uk/wp-content/uploads/2015/07/broken-tap-emergency-plumber-300x225.jpg", :user_id =>u1.id
+
+j2 = Job.create :task_title =>"Home & Garden", :task_description =>"Mow the lawn",     :task_location => "Sydney", :due_date => "2016/09/30", :start_time => "8:45 AM", :workers_required => 1, :budget => 90.00, :images => "https://aussiegardenlover.files.wordpress.com/2011/11/long-grass.jpg", :user_id =>u2.id
+
+j3 = Job.create :task_title =>"Laundry", :task_description =>"Wash the clothes",     :task_location => "Sydney", :due_date => "2016/09/29", :start_time => "8:45 AM", :workers_required => 3, :budget => 90.00, :images => "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2015/11/2/1446488122857/53fb43da-22d7-4c95-9363-3fac10b60917-2060x1236.jpeg?w=620&q=55&auto=format&usm=12&fit=max&s=f97060839529396abbd1bed865f84c5d", :user_id =>u3.id
+
+p "Total Jobs posted : #{Job.all.count}"
+u1.jobs << j1 
+u2.jobs << j2
+u3.jobs << j3
+p "Job one #{j1.task_title} posted by : #{j1.user.name}"
+p "Job two #{j2.task_title} posted by : #{j2.user.name}"
+p "Job three #{j3.task_title} posted by : #{j3.user.name}"
+
 
 Category.destroy_all
 c1 = Category.create :name => "Home & Garden"
