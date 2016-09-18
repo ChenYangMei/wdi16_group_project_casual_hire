@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20160917231823) do
   end
 
   create_table "ratings", force: :cascade do |t|
+    t.text     "body"
     t.integer  "rating_id"
     t.integer  "user_id"
     t.integer  "job_id"
