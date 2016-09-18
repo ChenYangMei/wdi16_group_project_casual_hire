@@ -1,2 +1,12 @@
-<h1>Jobs#index</h1>
-<p>Find me in app/views/jobs/index.html.erb</p>
+<h2>All jobs posted</h2>
+
+<ul>
+  <% @jobs.each do |a| %>
+    <li>
+        <p>Job Title: <%= link_to( a.task_title, "/jobs/#{a.id}" ) %></p>
+        <p><%= image_tag( a.images ) %></p>
+        <p>Task Location: <%= a.task_location %></p>
+        <p>Budget: <%= "$#{a.budget}" %></p>
+    </li>
+  <% end %>
+</ul>

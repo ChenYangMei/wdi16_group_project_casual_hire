@@ -1,0 +1,44 @@
+<h2>Post new Job</h2>
+
+<%= form_for @job do |f| %>
+      <p>
+        <%= f.label :task_title,"Task Title" %>
+        <%= f.text_field :task_title, :required => true %>
+      </p>
+      <p>
+        <%= f.label :task_description,"Task Description" %>
+        <%= f.text_field :task_description, :required => true %>
+      </p>
+      <p>
+        <%= f.label :task_location, "Location of job" %>
+        <%= f.text_field :task_location, :required => true %>
+      </p>
+
+      <p>
+        <%= f.label :due_date, "Date of job" %>
+        <%= f.date_field :due_date, :required => true %>
+      </p>
+
+      <p>
+        <%= f.label :start_time, "Time of job" %>
+        <%= f.time_field :start_time, :required => true %>
+      </p>
+
+      <p>
+        <%= f.label :workers_required, "Workers required" %>
+        <%= f.text_field :workers_required, :required => true %>
+      </p>
+      <p>
+        <%= f.label :budget, "Budget" %>
+        <%= f.text_field :budget, :required => true %>
+      </p>
+      <p>
+        <%= f.label :images %>
+        <%= f.url_field :images, :required => true %>
+      </p>
+      <p>
+        <%= f.collection_select(:user_id, User.all, :id, :name) %>
+      </p>
+
+      <%= f.submit "Submit" %>
+<% end %>

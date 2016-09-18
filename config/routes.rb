@@ -1,12 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'jobs/edit'
-
-  get 'jobs/index'
-
-  get 'jobs/new'
-
-  get 'jobs/show'
+  root "jobs#index"
 
   resources :users
   resources :jobs
