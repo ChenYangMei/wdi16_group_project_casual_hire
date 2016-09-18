@@ -15,3 +15,14 @@
       <% if @job.user %>
         <p>Job Posted By: <%= link_to(@job.user.name, @job.user) %></p>
       <% end %>
+
+<table>
+  <h5>Comments</h5>
+    <tr>
+      <td>
+        <%= render @job.comments.order("created_at ASC") %>
+          <h3>Add a comment below:</h3>
+        <%= render 'comments/form' %>
+    </td>
+  </tr>
+</table>
