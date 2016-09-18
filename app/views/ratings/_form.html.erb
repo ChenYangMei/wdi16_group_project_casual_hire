@@ -1,5 +1,19 @@
-<%= radio_button_tag(:rating, "1") %>
-<%= radio_button_tag(:rating, "2") %>
-<%= radio_button_tag(:rating, "3") %>
-<%= radio_button_tag(:rating, "4") %>
-<%= radio_button_tag(:rating, "5") %>
+<h5>Write a review about a user</h5>
+
+<%= form_for @rating do |f| %>
+  <p>
+    <div><%= f.label :body %>
+      <%= f.text_area :body %></div>
+  </p>
+
+
+<p> Rate the user<br>
+  <%= radio_button_tag(:rating, "1") %> One Star<br>
+  <%= radio_button_tag(:rating, "2") %> Two Stars<br>
+  <%= radio_button_tag(:rating, "3") %> Three Stars<br>
+  <%= radio_button_tag(:rating, "4") %> Four Stars<br>
+  <%= radio_button_tag(:rating, "5") %> Five Stars<br>
+</p>
+
+<input class="button-primary" type="submit" value="SUBMIT">
+<% end %>
