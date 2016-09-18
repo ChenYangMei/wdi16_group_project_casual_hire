@@ -37,6 +37,9 @@ group :development, :test do
   gem 'byebug'
   gem 'annotate'
   gem 'pry-rails'
+  gem 'cloudinary'
+  gem 'materialize-sass'
+
 end
 
 group :development do
