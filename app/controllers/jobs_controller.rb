@@ -20,17 +20,13 @@ class JobsController < ApplicationController
       redirect_to job_path(job)
     end
 
-
-
-
-
-
     def edit
       @job = Job.find params[:id]
     end
 
     def update
       job = Job.find params[:id]
+      job.category_ids = params[:job][:category_ids]
       job.update job_params
       redirect_to job
     end

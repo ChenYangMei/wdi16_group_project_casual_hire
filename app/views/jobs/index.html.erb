@@ -6,7 +6,7 @@
   <div class="recipe-details">
   <% @jobs.each do |a| %>
   <div class="recipe">
-        <p>Job Title: <%= link_to( a.task_title, "/jobs/#{a.id}" ) %></p>
+        <h5>Job Title: <%= link_to( a.task_title, "/jobs/#{a.id}" ) %></h5>
         <%= cl_image_tag(a.images.first) %>
         <!-- <img class="each_image" src="" style='width:150px;height:150px;border-radius:50%;margin-left:10px;margin-right:10px;'> -->
         <br>

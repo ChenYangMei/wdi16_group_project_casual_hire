@@ -27,12 +27,12 @@
 
       <p>
         <%= f.label :start_time, "Time of job" %>
-        <%= f.time_field :start_time, :required => true %>
+        <%= f.time_field :start_time %>
       </p>
 
       <p>
         <%= f.label :workers_required, "Workers required" %>
-        <%= f.text_field :workers_required, :required => true %>
+        <%= f.text_field :workers_required %>
       </p>
       <p>
         <%= f.label :budget, "Budget" %>
@@ -42,11 +42,6 @@
         <%= f.label :images %>
         <%= f.file_field :images, :multiple => true %>
       </p>
-      <p>
-        <%= f.collection_select(:user_id, User.all, :id, :name) %>
-      </p>
-
-
 
       <%= f.submit "Submit" %>
 <% end %>
