@@ -20,7 +20,11 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :applicants
 
-  enum role: [:employer, :employee]
+  enum role: [:admin, :employer, :employee]
+
+  def admin?
+    self.role == "admin"
+  end
 
   def employer?
     self.role == "employer"
@@ -30,4 +34,7 @@ class User < ActiveRecord::Base
     self.role == "employee"
   end
 
+  def role_c
+    self.role.capitalize
+  end
 end

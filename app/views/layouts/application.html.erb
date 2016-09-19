@@ -10,14 +10,21 @@
 
   <nav>
     <% unless @current_user.present? %>
+      <%= link_to("Sign Up", new_user_path) %> |
       <%= link_to("Log In", login_path()) %> |
     <% else %>
-      <%= link_to("Create a Job", new_job_path) %> |
-      <%= link_to(@current_user.name, @current_user) %> |
-      <%= link_to("Log Out", logout_path(), :method => :delete ) %> |
-    <% end %>
-    <%= link_to "Post New Job",new_job_path %>
 
+      <% if @current_user.admin? %>
+        <%= link_to("All Users", users_path) %>
+      <% end %>
+
+      <% if @current_user.employer? %>
+        <%= link_to("Create a Job", new_job_path) %> |
+      <% end %>
+
+      You're logged in as <%= @current_user.role_c %> <%= link_to(@current_user.name, @current_user) %> |
+      <%= link_to("Log Out", logout_path(), :method => :delete ) %>
+    <% end %>
   </nav>
 
   <% if flash[:success] %>
