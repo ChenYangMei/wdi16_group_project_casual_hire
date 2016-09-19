@@ -22,4 +22,18 @@ class Job < ActiveRecord::Base
   has_and_belongs_to_many :categories
   has_many :ratings
 
+  enum role: [:proposal, :in_progress, :completed]
+
+  def proposal?
+    self.status == "proposal"
+  end
+
+  def in_progress?
+    self.status == "in_progress"
+  end
+
+  def completed?
+    self.status == "completed"
+  end
+
 end
