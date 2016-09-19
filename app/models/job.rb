@@ -18,6 +18,7 @@
 
 class Job < ActiveRecord::Base
   belongs_to :user
+  has_many :applicants
   has_many :comments
   has_and_belongs_to_many :categories
   has_many :ratings, as: :rateable

@@ -18,4 +18,9 @@ class ApplicantsController < ApplicationController
 
   def edit
   end
+
+  private
+    def applicant_params
+      params.require(:applicant).permit(:body, :user_id, :job_id)
+    end
 end

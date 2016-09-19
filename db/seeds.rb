@@ -8,33 +8,40 @@
 
 User.destroy_all
 u1 = User.create :name => "Andrew", :email => "andrew@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 0
-u2 = User.create :name => "Arpan", :email => "arpan@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 1
-u3 = User.create :name => "Yangmei", :email => "yangmei@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 2
-u4 = User.create :name => "Badger", :email => "badger@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 1
+u2 = User.create :name => "Arpan", :email => "arpan@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 2
+u3 = User.create :name => "Yangmei", :email => "yangmei@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 1
+u4 = User.create :name => "Badger", :email => "badger@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 2
 u5 = User.create :name => "Wolf", :email => "wolf@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 1
 u6 = User.create :name => "Blade", :email => "blade@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 2
+u7 = User.create :name => "Blade", :email => "blade@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 1
+u8 = User.create :name => "Blade", :email => "blade@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 2
+u9 = User.create :name => "Samit", :email => "samit@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 1
+u10 = User.create :name => "Howie", :email => "howie@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 2
 
 p "Total users :#{User.all.count}"
 
 Job.destroy_all
 
-j1 = Job.create :task_title =>"Handyman", :task_description =>"Change all the taps",     :task_location => "Penrith", :due_date => "2016/09/24", :start_time => "3:45 PM", :workers_required => 1, :budget => 45.34, :images => "http://www.yourrepair.co.uk/wp-content/uploads/2015/07/broken-tap-emergency-plumber-300x225.jpg"
+j1 = Job.create :task_title =>"Handyman", :task_description =>"Change all the taps",     :task_location => "Penrith", :due_date => "2016/09/24", :budget => 45.34
 
-j2 = Job.create :task_title =>"Home & Garden", :task_description =>"Mow the lawn",     :task_location => "Sydney", :due_date => "2016/09/30", :start_time => "8:45 AM", :workers_required => 1, :budget => 90.00, :images => "https://aussiegardenlover.files.wordpress.com/2011/11/long-grass.jpg"
+j2 = Job.create :task_title =>"Home & Garden", :task_description =>"Mow the lawn",     :task_location => "Sydney", :due_date => "2016/09/30", :budget => 90.00
 
-j3 = Job.create :task_title =>"Laundry", :task_description =>"Wash the clothes",     :task_location => "Sydney", :due_date => "2016/09/29", :start_time => "8:45 AM", :workers_required => 3, :budget => 90.00, :images => "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2015/11/2/1446488122857/53fb43da-22d7-4c95-9363-3fac10b60917-2060x1236.jpeg?w=620&q=55&auto=format&usm=12&fit=max&s=f97060839529396abbd1bed865f84c5d"
+j3 = Job.create :task_title =>"Laundry", :task_description =>"Wash the clothes",     :task_location => "Sydney", :due_date => "2016/09/29", :budget => 90.00
 
-j1 = Job.create :task_title =>"Handyman", :task_description =>"Change all the taps",     :task_location => "Penrith", :due_date => "2016/09/24", :start_time => "3:45 PM", :workers_required => 1, :budget => 45.34, :user_id =>u1.id
+j4 = Job.create :task_title =>"Internet", :task_description =>"Set up my internet",     :task_location => "Manly", :due_date => "2016/10/02", :budget => 70.00
 
-j2 = Job.create :task_title =>"Home & Garden", :task_description =>"Mow the lawn",     :task_location => "Sydney", :due_date => "2016/09/30", :start_time => "8:45 AM", :workers_required => 1, :budget => 90.00, :user_id =>u2.id
 
-j3 = Job.create :task_title =>"Laundry", :task_description =>"Wash the clothes",     :task_location => "Sydney", :due_date => "2016/09/29", :start_time => "8:45 AM", :workers_required => 3, :budget => 90.00, :user_id =>u3.id
+j5 = Job.create :task_title =>"Survey", :task_description =>"Phone up for surveys",     :task_location => "Bondi", :due_date => "2016/10/02", :budget => 50.00
 
-j4 = Job.create :task_title =>"Internet", :task_description =>"Set up my internet",     :task_location => "Manly", :due_date => "2016/10/02", :start_time => "8:45 AM", :workers_required => 3, :budget => 70.00, :images => "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2015/11/2/1446488122857/53fb43da-22d7-4c95-9363-3fac10b60917-2060x1236.jpeg?w=620&q=55&auto=format&usm=12&fit=max&s=f97060839529396abbd1bed865f84c5d"
+j6 = Job.create :task_title =>"Bricklaying", :task_description =>"Build my house",     :task_location => "North Sydney", :due_date => "2016/09/24", :budget => 70.00
 
-j5 = Job.create :task_title =>"Survey", :task_description =>"Phone up for surveys",     :task_location => "Bondi", :due_date => "2016/10/02", :start_time => "8:45 PM", :workers_required => 2, :budget => 50.00, :images => "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2015/11/2/1446488122857/53fb43da-22d7-4c95-9363-3fac10b60917-2060x1236.jpeg?w=620&q=55&auto=format&usm=12&fit=max&s=f97060839529396abbd1bed865f84c5d"
+j7 = Job.create :task_title =>"Surfin Lesson", :task_description =>"Mow the lawn",     :task_location => "North Manly", :due_date => "2016/09/24", :budget => 70.00
 
-j6 = Job.create :task_title =>"Bricklaying", :task_description =>"Build my house",     :task_location => "North Sydney", :due_date => "2016/09/24", :start_time => "8:45 AM", :workers_required => 3, :budget => 70.00, :images => "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2015/11/2/1446488122857/53fb43da-22d7-4c95-9363-3fac10b60917-2060x1236.jpeg?w=620&q=55&auto=format&usm=12&fit=max&s=f97060839529396abbd1bed865f84c5d"
+j8 = Job.create :task_title =>"Cooking", :task_description =>"Babysit",     :task_location => "North Bondi", :due_date => "2016/09/24", :budget => 70.00
+
+j9 = Job.create :task_title =>"Ironing", :task_description =>"Fix a gutter",     :task_location => "North Maroubra", :due_date => "2016/09/24", :budget => 70.00
+
+j10 = Job.create :task_title =>"Bricklaying", :task_description =>"Fix a fence",     :task_location => "North Ryde", :due_date => "2016/09/24", :budget => 70.00
 
 Category.destroy_all
 c1 = Category.create :name => "Home & Garden"
@@ -53,11 +60,15 @@ p "Category count: #{Category.all.count}"
 
 p "Total Jobs posted : #{Job.all.count}"
 u1.jobs << j1
-u2.jobs << j2
-u3.jobs << j3
-u4.jobs << j4
+u3.jobs << j2
+u5.jobs << j3
+u7.jobs << j4
 u5.jobs << j5
-u6.jobs << j6
+u3.jobs << j6
+u3.jobs << j7
+u3.jobs << j8
+u3.jobs << j9
+u3.jobs << j10
 
 c1.jobs << j1 <<j3 <<j5
 c2.jobs << j2 <<j4 <<j6
@@ -65,24 +76,52 @@ c3.jobs << j1 <<j3 <<j5
 c4.jobs << j1 <<j3 <<j5
 c5.jobs << j1 <<j3 <<j5
 c6.jobs << j4 <<j5 <<j6
-c7.jobs << j1 <<j3 <<j5
-c8.jobs << j2 <<j3 <<j5
-c9.jobs << j2 <<j3 <<j5
+c7.jobs << j7 <<j8 <<j9
+c8.jobs << j10 <<j6 <<j9
+c9.jobs << j7 <<j8 <<j9
 
 Comment.destroy_all
-co1 = Comment.create({:body => "What are the specs?", :user_id => u1.id, :job_id => j1.id})
-
-co2 = Comment.create({:body => "Have you got more detail?", :user_id => u2.id, :job_id => j2.id})
-
+co1 = Comment.create({:body => "What are the specs?", :user_id => u2.id, :job_id => j1.id})
+co2 = Comment.create({:body => "Have you got more detail?", :user_id => u4.id, :job_id => j2.id})
 co3 = Comment.create({:body => "I'd love to help out. I've submitted a quote", :user_id => u2.id, :job_id => j3.id})
-
-co4 = Comment.create({:body => "Tell em their dreaming", :user_id => u2.id, :job_id => j4.id})
-
-co5 = Comment.create({:body => "I like the sounds of that", :user_id => u2.id, :job_id => j5.id})
-
+co4 = Comment.create({:body => "Tell em their dreaming", :user_id => u6.id, :job_id => j4.id})
+co5 = Comment.create({:body => "I like the sounds of that", :user_id => u4.id, :job_id => j5.id})
 co6 = Comment.create({:body => "Tell em their dreaming", :user_id => u2.id, :job_id => j6.id})
+co6 = Comment.create({:body => "Check out my profile!!!", :user_id => u4.id, :job_id => j7.id})
+co7 = Comment.create({:body => "Check out my profile!!!", :user_id => u2.id, :job_id => j8.id})
+co8 = Comment.create({:body => "Check out my profile!!!", :user_id => u8.id, :job_id => j9.id})
+co9 = Comment.create({:body => "Check out my profile!!!", :user_id => u4.id, :job_id => j10.id})
+co10 = Comment.create({:body => "Check out my profile!!!", :user_id => u2.id, :job_id => j6.id})
+co11 = Comment.create({:body => "Check out my profile!!!", :user_id => u6.id, :job_id => j4.id})
 
 p "Comments count: #{Comment.all.count}"
 
 Applicant.destroy_all
-a1 = Applicant.create :quote => 70.00 ,:description => "I'd like to complete this job for you. I'm awesome"
+a1 = Applicant.create :quote => 70.00, :description => "I'd like to complete this job for you. I'm awesome", :user_id => u2.id
+a2 = Applicant.create :quote => 50.00, :description => "Pick me. I'm awesome", :user_id => u4.id
+a3 = Applicant.create :quote => 60.00, :description => "I got what you need! I'm awesome", :user_id => u6.id
+a4 = Applicant.create :quote => 77.00, :description => "I'm happy to help. I'm awesome", :user_id => u8.id
+a5 = Applicant.create :quote => 44.00, :description => "I'm really awesome", :user_id => u10.id
+a6 = Applicant.create :quote => 34.00, :description => "Piece of cake", :user_id => u2.id
+a7 = Applicant.create :quote => 30.00, :description => "Let me know if you have any further questions", :user_id => u4.id
+
+p "Applicants count: #{Applicant.all.count}"
+
+j1.applicants << a1 << a2 << a3
+j2.applicants << a4 << a5 << a6
+j3.applicants << a5 << a6 << a7
+j4.applicants << a2 << a3 << a4
+j5.applicants << a1 << a7 << a5
+j6.applicants << a3 << a2 << a7
+j7.applicants << a6 << a5 << a6
+j8.applicants << a1 << a4 << a6
+j9.applicants << a1 << a2 << a5
+j10.applicants << a4 << a2 << a3
+
+Rating.destroy_all
+r1 = Rating.create :body => "I loved working with this person", :score => 4
+r2 = Rating.create :body => "I enjoyed working with this user but suggest they could be more helpful", :score => 3
+r3 = Rating.create :body => "The user was average", :score => 3
+r4 = Rating.create :body => "Below average experience", :score => 2
+r5 = Rating.create :body => "I want to marry this person", :score => 5
+r6 = Rating.create :body => "Turned up late and still didn't do everything", :score => 1
