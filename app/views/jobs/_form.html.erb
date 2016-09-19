@@ -1,9 +1,15 @@
 <h2>Post new Job</h2>
 
-<%= form_for @job do |f| %>
+<%= form_for(@job, multipart: true) do |f| %>
       <p>
         <%= f.label :task_title,"Task Title" %>
         <%= f.text_field :task_title, :required => true %>
+      </p>
+      <p>Please add the categories related to your job.
+            <%= hidden_field_tag "job[category_ids][]", nil %>
+              <% Category.all.each do |category| %>
+                <div class="button"><%= check_box_tag "job[category_ids][]", category.id, @job.category_ids.include?(category.id), id: dom_id(category) %><%= label_tag dom_id(category), category.name %></div>
+            <% end %>
       </p>
       <p>
         <%= f.label :task_description,"Task Description" %>
@@ -34,18 +40,13 @@
       </p>
       <p>
         <%= f.label :images %>
-        <%= f.url_field :images, :required => true %>
+        <%= f.file_field :images, :multiple => true %>
       </p>
       <p>
         <%= f.collection_select(:user_id, User.all, :id, :name) %>
       </p>
 
-      <p>Please add the categories related to your job.
-            <%= hidden_field_tag "job[category_ids][]", nil %>
-              <% Category.all.each do |category| %>
-                <div class="button"><%= check_box_tag "job[category_ids][]", category.id, @job.category_ids.include?(category.id), id: dom_id(category) %><%= label_tag dom_id(category), category.name %></div>
-            <% end %>
-      </p>
+
 
       <%= f.submit "Submit" %>
 <% end %>

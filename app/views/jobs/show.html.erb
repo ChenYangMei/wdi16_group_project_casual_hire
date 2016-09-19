@@ -4,7 +4,9 @@
        <%= link_to "Delete work", @job, :method => :delete, :data => { :confirm => "Are you sure?" } %>
       </div>
       <p>Job Title: <%= @job.task_title %></p>
-      <%= image_tag(@job.images ) %>
+      <% @job.images.each do |image| %>
+        <%= cl_image_tag(image) %>
+      <% end %>
       <p>Description: <%= @job.task_description %></p>
       <p>Task Location: <%= @job.task_location %></p>
       <p>Date of Job: <%= @job.due_date %></p>

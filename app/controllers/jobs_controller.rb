@@ -9,11 +9,21 @@ class JobsController < ApplicationController
     end
 
     def create
-      @job = Job.create job_params
-      @job.category_ids = params[:job][:category_ids]
-      redirect_to @job
+      # This is the magic stuff that will let us upload an image to Cloudinary when creating a new animal.
+      job = Job.new(job_params)
 
+      params[:job][:images].each do |image|
+        req = Cloudinary::Uploader.upload(image)
+        job.images << req["url"]
+      end
+      job.save
+      redirect_to job_path(job)
     end
+
+
+
+
+
 
     def edit
       @job = Job.find params[:id]
@@ -38,6 +48,6 @@ class JobsController < ApplicationController
 
     private
     def job_params
-      params.require(:job).permit(:task_title, :task_description, :task_location, :due_date, :start_time, :workers_required, :budget, :images, :user_id, :applicant_id, :category_id, :category_ids, :rating_id)
+      params.require(:job).permit(:task_title, :task_description, :task_location, :due_date, :start_time, :workers_required, :budget, :user_id, :applicant_id, :category_id, :category_ids, :rating_id)
     end
 end
