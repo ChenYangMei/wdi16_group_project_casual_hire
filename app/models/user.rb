@@ -16,7 +16,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   has_many :jobs
-  has_many :ratings
+  has_many :ratings, as: :rateable
   has_many :comments
   has_many :applicants
 
@@ -37,4 +37,11 @@ class User < ActiveRecord::Base
   def role_c
     self.role.capitalize
   end
+
+  def get_sorted_jobs
+      self.jobs.sort_by do |j|
+          j.created_at
+      end
+  end
+  
 end
