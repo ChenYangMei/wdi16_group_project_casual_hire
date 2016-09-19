@@ -15,16 +15,17 @@
         <p>Budget: <%= "$#{a.budget}" %></p>
 
 
-        <p>
+      
           <% if a.categories.count == 0 %>
             No categories
             <% else %>Categories: <% a.categories.each do |b| %>
             <a class="button" <%= link_to(b.name, category_path(b)) %></a>
             <% end %> <br>
           <% end %>
-        </p>
-        <%= link_to "view job", job_path( a.id ), :method => :get ,:class => "waves-effect waves-light btn"%>
 
+        <%= link_to "view job", job_path( a.id ), :method => :get ,:class => "waves-effect waves-light btn"%>
+  </div>
   <% end %>
+  </div>
 
 </body>
