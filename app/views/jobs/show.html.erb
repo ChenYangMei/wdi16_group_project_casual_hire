@@ -12,6 +12,13 @@
       <p>No. of people Required: <%= @job.workers_required %></p>
       <p>Budget: <%= "$#{@job.budget}" %></p>
 
+      <% if @job.categories.count == 0 %>
+        No Categories
+        <% else %>Categories: <% @job.categories.each do |b| %>
+          <a class="button" <%= link_to(b.name, category_path(b)) %></a>
+        <% end %><br>
+      <% end %>
+
       <% if @job.user %>
         <p>Job Posted By: <%= link_to(@job.user.name, @job.user) %></p>
       <% end %>

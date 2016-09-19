@@ -1,11 +1,11 @@
 <div class="form">
   <%= form_for(@user, :html => {:multipart => true}) do |f| %>
-    <% if @current_user.admin? %>
+
     <p>
-      <%= f.label :role %>
-      <%= f.select(:role, [['Admin', 'admin'], ['Teacher', 'teacher'], ['Family Member', 'family_member']]) %>
+      <%= f.label :I_Want_to %>
+      <%= f.select(:role, [['Post Jobs', 'employer'], ['Look for Jobs', 'employee']]) %>
     </p>
-    <% end %>
+
     <p>
       <%= f.label :name %>
       <%= f.text_field :name, :required => true %>
