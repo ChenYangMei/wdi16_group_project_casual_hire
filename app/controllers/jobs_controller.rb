@@ -5,12 +5,14 @@ class JobsController < ApplicationController
     end
 
     def new
-      @job = Job.create
+      @job = Job.new
     end
 
     def create
-      job = Job.create job_params
-      redirect_to job
+      @job = Job.create job_params
+      @job.category_ids = params[:job][:category_ids]
+      redirect_to @job
+
     end
 
     def edit

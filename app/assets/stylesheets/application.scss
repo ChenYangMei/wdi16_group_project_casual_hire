@@ -15,6 +15,25 @@
  *= require_tree .
  *= require_self
  */
- img {
-   width:50%;
+
+ // .recipe-details{
+ // // margin-top: 80px ;
+ // // margin-left: 100px;
+ //
+ //  height:1000px;
+ //  width:1000px;
+ //  border: 2px solid red;
+ // }
+ .each_image{
+  margin:20px 40px 10px 30px;
+  display:inline-block;
+ }
+
+ .recipe{
+  margin-right: 15px;
+  margin-bottom: 15px;
+  margin-bottom: 100px;
+  height:300px;
+  width:300px;
+  float:left;
  }
