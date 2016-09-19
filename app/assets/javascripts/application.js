@@ -12,6 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require turbolinks
+//= require jquery.slick
+//= require initialize
 //= require materialize-sprockets
 //= require underscore
 //= require backbone
