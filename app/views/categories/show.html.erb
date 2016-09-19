@@ -1,8 +1,8 @@
 <h1>A list of jobs for <%= @category.name %></h1>
 
 <%= link_to( "Back to Categories", categories_path() )%>
-<h4>Jobs under <%= @category.name %>:
-<div>Sorted by popularity</div>
+<h4>Jobs under <%= @category.name %></h4>
+<div>Sorted by most recent</div>
 <% @category.get_sorted_jobs.each do |b| %>
   <%= link_to(b.task_title, job_path( b )) %>
   <br>

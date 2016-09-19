@@ -21,6 +21,7 @@ class JobsController < ApplicationController
 
     def update
       job = Job.find params[:id]
+      job.category_ids = params[:job][:category_ids]
       job.update job_params
       redirect_to job
     end
