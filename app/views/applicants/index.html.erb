@@ -1,0 +1,13 @@
+<ul>
+  <% @applicants.each do |a| %>
+    <li>
+      User: <%= a.user %>
+    </li>
+    <li>
+      Quote: <%= a.quote %>
+    </li>
+    <li>
+      Description: <%= a.description %>
+    </li>
+  <% end %>
+</ul>

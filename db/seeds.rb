@@ -17,11 +17,19 @@ u6 = User.create :name => "Blade", :email => "blade@ga.co", :password => "chicke
 p "Total users :#{User.all.count}"
 
 Job.destroy_all
+<<<<<<< HEAD
 j1 = Job.create :task_title =>"Handyman", :task_description =>"Change all the taps",     :task_location => "Penrith", :due_date => "2016/09/24", :start_time => "3:45 PM", :workers_required => 1, :budget => 45.34, :images => "http://www.yourrepair.co.uk/wp-content/uploads/2015/07/broken-tap-emergency-plumber-300x225.jpg"
 
 j2 = Job.create :task_title =>"Home & Garden", :task_description =>"Mow the lawn",     :task_location => "Sydney", :due_date => "2016/09/30", :start_time => "8:45 AM", :workers_required => 1, :budget => 90.00, :images => "https://aussiegardenlover.files.wordpress.com/2011/11/long-grass.jpg"
 
 j3 = Job.create :task_title =>"Laundry", :task_description =>"Wash the clothes",     :task_location => "Sydney", :due_date => "2016/09/29", :start_time => "8:45 AM", :workers_required => 3, :budget => 90.00, :images => "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2015/11/2/1446488122857/53fb43da-22d7-4c95-9363-3fac10b60917-2060x1236.jpeg?w=620&q=55&auto=format&usm=12&fit=max&s=f97060839529396abbd1bed865f84c5d"
+=======
+j1 = Job.create :task_title =>"Handyman", :task_description =>"Change all the taps",     :task_location => "Penrith", :due_date => "2016/09/24", :start_time => "3:45 PM", :workers_required => 1, :budget => 45.34, :user_id =>u1.id
+
+j2 = Job.create :task_title =>"Home & Garden", :task_description =>"Mow the lawn",     :task_location => "Sydney", :due_date => "2016/09/30", :start_time => "8:45 AM", :workers_required => 1, :budget => 90.00, :user_id =>u2.id
+
+j3 = Job.create :task_title =>"Laundry", :task_description =>"Wash the clothes",     :task_location => "Sydney", :due_date => "2016/09/29", :start_time => "8:45 AM", :workers_required => 3, :budget => 90.00, :user_id =>u3.id
+>>>>>>> cfd8b2fc83f6a76ea9d0c2fb79dfb1aca8d452c6
 
 j4 = Job.create :task_title =>"Internet", :task_description =>"Set up my internet",     :task_location => "Manly", :due_date => "2016/10/02", :start_time => "8:45 AM", :workers_required => 3, :budget => 70.00, :images => "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2015/11/2/1446488122857/53fb43da-22d7-4c95-9363-3fac10b60917-2060x1236.jpeg?w=620&q=55&auto=format&usm=12&fit=max&s=f97060839529396abbd1bed865f84c5d"
 

@@ -6,10 +6,11 @@
   <div class="recipe-details">
   <% @jobs.each do |a| %>
   <div class="recipe">
-
         <p>Job Title: <%= link_to( a.task_title, "/jobs/#{a.id}" ) %></p>
-        <img class="each_image" src="<%= a.images %>" style='width:300px;height:300px;margin-left:10px;margin-right:10px;'><br>
-        <%= link_to "view job", job_path( a.id ), :method => :get ,:class => "waves-effect waves-light btn"%>
+        <%= cl_image_tag(a.images.first) %>
+        <!-- <img class="each_image" src="" style='width:150px;height:150px;border-radius:50%;margin-left:10px;margin-right:10px;'> -->
+        <br>
+
         <p>Task Location: <%= a.task_location %></p>
         <p>Budget: <%= "$#{a.budget}" %></p>
 
@@ -22,8 +23,8 @@
             <% end %> <br>
           <% end %>
         </p>
+        <%= link_to "view job", job_path( a.id ), :method => :get ,:class => "waves-effect waves-light btn"%>
 
-    </li>
   <% end %>
 
 </body>
