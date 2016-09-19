@@ -20,3 +20,10 @@
             <li><%= link_to truncate(a.task_title, :length => 40), job_path( a ) %></li>
         <% end %>
       </ul>
+
+<h5>Ratings for <%= @user.name %></h5>
+      <ul>
+        <% @user.ratings do |a| %>
+            <li><%= a.body %></li>
+        <% end %>
+      </ul>

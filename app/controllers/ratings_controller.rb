@@ -2,7 +2,7 @@ class RatingsController < ApplicationController
 
   def index
     @ratings = Rating.all
-      @rateable = find_rateable
+    @rateable = find_rateable
   end
 
   def show
@@ -15,8 +15,9 @@ class RatingsController < ApplicationController
 
   def create
     @rateable = find_rateable
-    @rating = Rating.create( rating_params )
-    redirect_to @rating
+    @rating = @rateable.ratings.build(rating_params)
+    # @rating = Rating.create( rating_params )
+    # redirect_to @rating
   end
 
   def edit

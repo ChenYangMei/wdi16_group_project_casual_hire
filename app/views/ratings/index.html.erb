@@ -5,9 +5,20 @@
 <ul>
   <% @ratings.each do |a| %>
     <li>
-        <p>User: <%= a.user.name %></p>
+        <!-- <p>User: </%= a.user.name %></p> -->
         <p>Rating: <%= a.score %></p>
         <p>Review: <%= a.body %></p>
+    </li>
+  <% end %>
+</ul>
+
+
+<ul>
+  <% @rateable.each do |a| %>
+    <li>
+        <!-- <p>User: </%= a.user.name %></p> -->
+        <!-- <p>Rating: </%= a.ratings.score %></p> -->
+
     </li>
   <% end %>
 </ul>
