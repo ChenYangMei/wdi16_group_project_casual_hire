@@ -21,6 +21,6 @@ class ApplicantsController < ApplicationController
 
   private
     def applicant_params
-      params.require(:applicant).permit(:body, :user_id, :job_id)
+      params.require(:applicant).permit(:body, :quote, :user_id, :job_id)
     end
 end

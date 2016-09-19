@@ -2,6 +2,7 @@ class RatingsController < ApplicationController
 
   def index
     @ratings = Rating.all
+      @rateable = find_rateable
   end
 
   def show
@@ -13,6 +14,7 @@ class RatingsController < ApplicationController
   end
 
   def create
+    @rateable = find_rateable
     @rating = Rating.create( rating_params )
     redirect_to @rating
   end
@@ -38,4 +40,11 @@ private
     params.require(:rating).permit(:body, :score, :job_id, :user_id)
   end
 
+  def find_rateable
+    params.each do |name, value|
+      if name =~ /(.+)_id$/
+        return $1.classify.constantize.find(value)
+      end
+    end
+  end
 end

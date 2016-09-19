@@ -119,9 +119,16 @@ j9.applicants << a1 << a2 << a5
 j10.applicants << a4 << a2 << a3
 
 Rating.destroy_all
-r1 = Rating.create :body => "I loved working with this person", :score => 4
-r2 = Rating.create :body => "I enjoyed working with this user but suggest they could be more helpful", :score => 3
-r3 = Rating.create :body => "The user was average", :score => 3
-r4 = Rating.create :body => "Below average experience", :score => 2
-r5 = Rating.create :body => "I want to marry this person", :score => 5
-r6 = Rating.create :body => "Turned up late and still didn't do everything", :score => 1
+r1 = Rating.create :body => "I loved working with this person", :score => 4, :user_id => u6.id
+r2 = Rating.create :body => "I enjoyed working with this user but suggest they could be more helpful", :score => 3, :user_id => u4.id
+r3 = Rating.create :body => "The user was average", :score => 3, :user_id => u2.id
+r4 = Rating.create :body => "Below average experience", :score => 2, :user_id => u8.id
+r5 = Rating.create :body => "I want to marry this person", :score => 5, :user_id => u6.id
+r6 = Rating.create :body => "Turned up late and still didn't do everything", :score => 1, :user_id => u2.id
+
+j1.ratings << r1
+j2.ratings << r2
+j3.ratings << r3
+j4.ratings << r4
+j5.ratings << r5
+j6.ratings << r6

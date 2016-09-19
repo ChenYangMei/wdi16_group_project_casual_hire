@@ -5,7 +5,9 @@
 <ul>
   <% @ratings.each do |a| %>
     <li>
-        <p>Rating: <%= rating.body %></p>
+        <p>User: <%= a.user.name %></p>
+        <p>Rating: <%= a.score %></p>
+        <p>Review: <%= a.body %></p>
     </li>
   <% end %>
 </ul>
