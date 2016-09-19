@@ -4,4 +4,19 @@
   <li>Name: <%= @user.name %></li>
   <li>Email: <%= @user.email %></li>
   <li>Role: <%= @user.role %></li>
+  <li>Member Since: <%= @user.created_at.strftime("%B '%y") %></li>
 </ul>
+
+<div>Job count: <%= @user.jobs.count%></div>
+    <div>Last Job:
+      <% if @user.jobs.count > 0 %>
+      <%= time_ago_in_words(@user.jobs.last.created_at) %>
+      <% end %> ago.
+    </div>
+
+<h5>Jobs from <%= @user.name %></h5>
+      <ul>
+        <% @user.get_sorted_jobs.reverse_each do |a| %>
+            <li><%= link_to truncate(a.task_title, :length => 40), job_path( a ) %></li>
+        <% end %>
+      </ul>

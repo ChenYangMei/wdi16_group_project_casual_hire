@@ -8,11 +8,8 @@
 #  job_id     :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  body       :text
-#  score      :integer
 #
 
 class Rating < ActiveRecord::Base
-    belongs_to :user
-    belongs_to :job
+    belongs_to :rateable, polymorphic: true    
 end
