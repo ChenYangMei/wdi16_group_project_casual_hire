@@ -10,8 +10,7 @@
 #
 
 class Category < ActiveRecord::Base
-  has_many :jobs
-
+  has_and_belongs_to_many :jobs
 
 
 # def get_sorted_jobs

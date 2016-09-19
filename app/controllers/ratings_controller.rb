@@ -34,8 +34,8 @@ class RatingsController < ApplicationController
   end
 
 private
-  def user_params
-    params.require(:user).permit(:name, :job_id)
+  def rating_params
+    params.require(:rating).permit(:body, :score, :user_id, :job_id)
   end
 
 end
