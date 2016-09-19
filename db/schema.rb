@@ -32,6 +32,11 @@ ActiveRecord::Schema.define(version: 20160919010709) do
     t.integer  "job_id"
   end
 
+  create_table "categories_jobs", force: :cascade do |t|
+    t.integer "job_id"
+    t.integer "category_id"
+  end
+
   create_table "comments", force: :cascade do |t|
     t.text     "body"
     t.integer  "job_id"
@@ -52,11 +57,6 @@ ActiveRecord::Schema.define(version: 20160919010709) do
     t.integer  "user_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-  end
-
-  create_table "jobs_categories", force: :cascade do |t|
-    t.integer "job_id"
-    t.integer "category_id"
   end
 
   create_table "ratings", force: :cascade do |t|
