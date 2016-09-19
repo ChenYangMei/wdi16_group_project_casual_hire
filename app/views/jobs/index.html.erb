@@ -1,17 +1,18 @@
 <body>
-  <div class="container">
-    <!-- Page Content goes here -->
 
 
-<ul>
+
+
+  <div class="recipe-details">
   <% @jobs.each do |a| %>
-    <li>
+  <div class="recipe">
+
         <p>Job Title: <%= link_to( a.task_title, "/jobs/#{a.id}" ) %></p>
-        <p><%= image_tag( a.images ) %></p>
+        <img class="each_image" src="<%= a.images %>" style='width:300px;height:300px;margin-left:10px;margin-right:10px;'><br>
+        <%= link_to "view job", job_path( a.id ), :method => :get ,:class => "waves-effect waves-light btn"%>
         <p>Task Location: <%= a.task_location %></p>
         <p>Budget: <%= "$#{a.budget}" %></p>
-    </li>
+
   <% end %>
-</ul>
-</div>
+
 </body>
