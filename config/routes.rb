@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  root "jobs#index"
 
   resources :users
   resources :jobs, :ratings
   resources :categories, :except => [:edit]
+  resources :applicants
 
   resources :jobs do
     resources :comments

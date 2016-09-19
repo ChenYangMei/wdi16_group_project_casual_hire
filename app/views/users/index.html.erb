@@ -4,6 +4,7 @@
   <% @users.each do |u| %>
   <li>
     <%= link_to(u.name, u) %>
+    Jobs <%= u.jobs.count %>
   </li>
   <% end %>
 </ul>
