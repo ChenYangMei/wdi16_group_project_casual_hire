@@ -18,12 +18,5 @@ class ApplicationController < ActionController::Base
     flash[:error] = "You need to be logged in to see that" unless @current_user.present?
     redirect_to login_path unless @current_user.present?
   end
-# For geocoder
-  def index
-    if params[:search].present?
-      @locations = Location.near(params[:search], 50, :order => :distance)
-    else
-      @locations = Location.all
-    end
-  end
+
 end

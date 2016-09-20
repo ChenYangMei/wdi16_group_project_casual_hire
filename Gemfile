@@ -40,8 +40,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'cloudinary'
   gem 'materialize-sass'
-  gem 'geocoder'
-  gem 'nifty-generators'
 
 end
 
