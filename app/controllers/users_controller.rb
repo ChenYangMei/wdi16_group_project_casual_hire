@@ -15,6 +15,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    req = Cloudinary::Uploader.upload( params[:image])
+    @user.image = req["public_id"]
+    @user.save
 
     respond_to do |format|
       if @user.save

@@ -5,25 +5,34 @@
 
   <div class="recipe-details">
   <% @jobs.each do |a| %>
-  <div class="recipe">
+  <!-- Take explicit height off card small in your CSS -->
+  <!-- Take width off card small in your css -->
+  <!-- Put your image in a div with display: inline-block -->
+  <!-- Group your h5, br, and all the other stuff you want to appear next to the image in a div with the same class as the div you've wrapped around your image -->
+  <div class="card small" id= "cardsmall">
+    <!-- Card Content -->
+
         <h5>Job Title: <%= link_to( a.task_title, "/jobs/#{a.id}" ) %></h5>
-        <%= cl_image_tag(a.images.first) %>
-        <!-- <img class="each_image" src="" style='width:150px;height:150px;border-radius:50%;margin-left:10px;margin-right:10px;'> -->
-        <br>
+          <%= cl_image_tag(a.images.first) %>
+        <!-- </div> -->
+        <!-- <br> -->
+      <div class ="thumbnail_image">
 
-        <p>Task Location: <%= a.task_location %></p>
-        <p>Budget: <%= "$#{a.budget}" %></p>
+          <p>Task Location: <%= a.task_location %></p>
+          <p>Budget: <%= "$#{a.budget}" %></p>
+<!--
+        <%#= link_to "view job", job_path( a.id ), :method => :get ,:class => "waves-effect waves-light btn"%> -->
+
+    </div>
+    <br>
+    <% if a.categories.count == 0 %>
+      No categories
+      <% else %>Categories: <% a.categories.each do |b| %>
+      <a class="button" <%= link_to(b.name, category_path(b)) %></a>
+      <% end %> <br>
+    <% end %>
 
 
-      
-          <% if a.categories.count == 0 %>
-            No categories
-            <% else %>Categories: <% a.categories.each do |b| %>
-            <a class="button" <%= link_to(b.name, category_path(b)) %></a>
-            <% end %> <br>
-          <% end %>
-
-        <%= link_to "view job", job_path( a.id ), :method => :get ,:class => "waves-effect waves-light btn"%>
   </div>
   <% end %>
   </div>
