@@ -108,6 +108,10 @@ j8.applicants << a1 << a4 << a6
 j9.applicants << a1 << a2 << a5
 j10.applicants << a4 << a2 << a3
 
+u3.applicants << a1 << a4 << a7
+u5.applicants << a2 << a5
+u7.applicants << a6 << a3
+
 Rating.destroy_all
 r1 = Rating.create :body => "I loved working with this person", :score => 4, :user_id => u6.id
 r2 = Rating.create :body => "I enjoyed working with this user but suggest they could be more helpful", :score => 3, :user_id => u4.id
