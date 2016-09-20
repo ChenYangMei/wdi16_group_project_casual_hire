@@ -1,4 +1,4 @@
- @import "materialize";
+
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
@@ -16,14 +16,42 @@
  *= require_self
  */
 
- // .recipe-details{
- // // margin-top: 80px ;
- // // margin-left: 100px;
- //
- //  height:1000px;
- //  width:1000px;
- //  border: 2px solid red;
- // }
+ @import "materialize";
+ @import 'slick';
+ @import 'slick-theme';
+
+.scroller {
+ div {
+   text-align: center;
+   height: 300px;
+   width: 300px;
+   object-fit: none;
+   overflow: hidden;
+   align-items: center;
+   background-position: 50% 50%;
+   background-repeat:   no-repeat;
+   background-size:     cover;
+    z-index: 999;
+    opacity: 1;
+    border:2px solid #DCECF5;
+    border-radius: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+ }
+}
+.slick-prev::before, .slick-next::before {
+ color: #808080;
+}
+
+.slick-next {
+ right: -5px;
+}
+
+.slick-prev {
+ left: -5px;
+}
+
  .each_image{
   margin:20px 40px 10px 30px;
   display:inline-block;
@@ -36,4 +64,39 @@
   height:300px;
   width:300px;
   float:left;
+  border: 2px solid black;
+
+ }
+ //
+ // .recipe-details{
+ // margin-top: 80px ;
+ // margin-left: 100px;
+ //
+ //  height:1000px;
+ //  width:1000px;
+ //  border: 2px solid red;
+ // }
+ img{
+   width: 100px;
+   height: 100px;
+   display:inline-block;
+  //  border-radius: 50%
+ }
+ #cardsmall{
+   vertical-align: top;
+   width: 40%;
+  //  height: 40%;
+   padding: 1% 1% 1% 1%;
+   margin: 1% 1% 1% 1%;
+   display: inline-block;
+   background-color: grey;
+ }
+ .thumbnail_image{
+   display: inline-block;
+   padding-left: 2%;
+ }
+ .thumbnail_image {
+   padding-left: 4%;
+   padding-bottom: 4%;
+   vertical-align: top;
  }

@@ -22,10 +22,10 @@
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation, :required => true %>
     </p>
-    <!-- <p>
-      <%#= f.label :image %>
-      <%#= f.cl_image_upload :image %>
-    </p> -->
+    <p>
+      <%= f.label :image %>
+      <%= f.url_field :image, :multiple => false %>
+    </p>
     <%= f.submit %>
   <% end %>
 </div>

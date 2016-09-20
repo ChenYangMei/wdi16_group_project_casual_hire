@@ -1,7 +1,10 @@
 <ul>
   <% @applicants.each do |a| %>
     <li>
-      User: <%= a.user %>
+      User: <%= a.user.name %>
+    </li>
+    <li>
+      Job: <%= a.job.task_title %>
     </li>
     <li>
       Quote: <%= a.quote %>

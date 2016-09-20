@@ -1,6 +1,7 @@
 <h1>Individual User:</h1>
 
 <ul>
+  <li><%= @user.image %></li>
   <li>Name: <%= @user.name %></li>
   <li>Email: <%= @user.email %></li>
   <li>Role: <%= @user.role_c %></li>
@@ -18,5 +19,12 @@
       <ul>
         <% @user.get_sorted_jobs.reverse_each do |a| %>
             <li><%= link_to truncate(a.task_title, :length => 40), job_path( a ) %></li>
+        <% end %>
+      </ul>
+
+<h5>Ratings for <%= @user.name %></h5>
+      <ul>
+        <% @user.ratings do |a| %>
+            <li><%= a.body %></li>
         <% end %>
       </ul>

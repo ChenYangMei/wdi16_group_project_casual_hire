@@ -3,8 +3,15 @@
        <%= link_to "Edit work", edit_job_path( @job.id ) %>
        <%= link_to "Delete work", @job, :method => :delete, :data => { :confirm => "Are you sure?" } %>
       </div>
+
       <p>Job Title: <%= @job.task_title %></p>
-      <%= image_tag(@job.images ) %>
+
+      <div class="scroller">
+      <% @job.images.each do |image| %>
+        <%= cl_image_tag(image) %>
+      <% end %>
+      </div>
+
       <p>Description: <%= @job.task_description %></p>
       <p>Task Location: <%= @job.task_location %></p>
       <p>Date of Job: <%= @job.due_date %></p>
@@ -19,9 +26,14 @@
         <% end %><br>
       <% end %>
 
+
+
       <% if @job.user %>
         <p>Job Posted By: <%= link_to(@job.user.name, @job.user) %></p>
       <% end %>
+
+      <!-- Tweet link -->
+      <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
       <div class="button" id="makeAnOffer">
         Make an Offer

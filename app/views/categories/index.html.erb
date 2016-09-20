@@ -1,5 +1,5 @@
 <h5>Search jobs via categories</h5>
 
 <% @categories.each do |a| %>
-<a class="button" <%= link_to(a.name, category_path( a )) %></a>
+<a class="button" <%= link_to(a.name, category_path( a )) %></a><br>
 <% end %>

@@ -1,18 +1,16 @@
 class CategoriesController < ApplicationController
 
   def index
-      @categories = Category.all
+    @categories = Category.all
   end
 
   def show
     @category = Category.find( params[:id] )
   end
 
-
-
   private
-    def user_params
-      params.require(:user).permit(:name, :category_id, :job_id)
+    def category_params
+      params.require(:category).permit(:name, :category_id, :job_id)
     end
 
 end

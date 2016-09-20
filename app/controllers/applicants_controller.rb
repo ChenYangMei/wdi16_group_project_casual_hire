@@ -34,7 +34,9 @@ class ApplicantsController < ApplicationController
   end
 
   private
+
   def applicant_params
     params.require(:applicant).permit(:description, :quote, :user_id, :job_id)
   end
+
 end
