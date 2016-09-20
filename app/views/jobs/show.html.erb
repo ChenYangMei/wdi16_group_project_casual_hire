@@ -1,3 +1,4 @@
+
       <div class="controls">
        <%= link_to "All Jobs", jobs_path %>
        <%= link_to "Edit work", edit_job_path( @job.id ) %>
@@ -37,13 +38,86 @@
         Make an Offer
       </div>
 
+<div class="controls">
+ <%= link_to "All Jobs", jobs_path %>
+ <%= link_to "Edit work", edit_job_path( @job.id ) %>
+ <%= link_to "Delete work", @job, :method => :delete, :data => { :confirm => "Are you sure?" } %>
+</div>
+
+<p>Job Title: <%= @job.task_title %></p>
+
+
+<div class="scroller">
+  <% @job.images.each do |image| %>
+    <%= cl_image_tag(image) %>
+  <% end %>
+</div>
+
+<p>Description: <%= @job.task_description %></p>
+<p>Task Location: <%= @job.task_location %></p>
+<p>Date of Job: <%= @job.due_date %></p>
+<p>Time of Job: <%= @job.start_time %></p>
+<p>No. of people Required: <%= @job.workers_required %></p>
+<p>Budget: <%= "$#{@job.budget}" %></p>
+
+
+<% if @job.categories.count == 0 %>
+  No Categories
+  <% else %>Categories: <% @job.categories.each do |b| %>
+    <a class="button" <%= link_to(b.name, category_path(b)) %></a>
+  <% end %><br>
+<% end %>
+
+<% if @job.user %>
+  <p>Job Posted By: <%= link_to(@job.user.name, @job.user) %></p>
+<% end %>
+
+<!-- Tweet link -->
+<a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<div class="status">
+  <p>
+    Status: <%= @job.status %>
+  </p>
+</div>
+
+<div class="button" id="makeAnOffer">
+  Make an Offer
+</div>
+
+
+<!-- Form is creating an application for the current job -->
+  <div id="offer">
+    <%= form_for([@job, @applicant], remote: true) do |f| %>
+      <p>
+        <%= f.label :quote %>
+        <%= f.text_field :quote, :required => true %>
+      </p>
+      <p>
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+      </p>
+      <p id="submit_offer">
+        <%= f.submit "Submit" %>
+      </p>
+    <% end %>
+  </div>
+
+<!-- Unserscore Template to display data -->
+  <script type="underscore/template" id="offerDisplayTemplate">
+    <p>Your Quote: <%%= quote %></p>
+    <p>Your Description: <%%= description %></p>
+  </script>
+
+
+
 <table>
-  <h5>Comments</h5>
-    <tr>
-      <td>
-        <%= render @job.comments.order("created_at ASC") %>
-          <h3>Add a comment below:</h3>
-        <%= render 'comments/form' %>
-    </td>
-  </tr>
+<h5>Comments</h5>
+  <tr>
+    <td>
+      <%= render @job.comments.order("created_at ASC") %>
+        <h3>Add a comment below:</h3>
+      <%= render 'comments/form' %>
+  </td>
+</tr>
 </table>

@@ -24,7 +24,7 @@
     </p>
     <p>
       <%= f.label :image %>
-      <%= f.url_field :image, :multiple => false %>
+      <%= f.cl_image_upload :images %>
     </p>
     <%= f.submit %>
   <% end %>

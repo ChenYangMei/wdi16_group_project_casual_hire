@@ -26,16 +26,3 @@ $(document).ready(function() {
     .on( "ajax:error", handleError );
 
 });
-
-
-// $(document).ready(function() {
-//   return $("#new_applicant").on("ajax:success", function(e, data, status, xhr) {
-//     var $quote = $("<p>").text(data.quote);
-//     $quote.attr("id", "applicant_quote");
-//     var $description = $("<p>").text(data.description);
-//     $description.attr("id", "applicant_description");
-//     return $("#new_applicant").append($quote).append($description);
-//   }).on("ajax:error", function(e, xhr, status, error) {
-//     return $("#new_applicant").append("<p>ERROR</p>");
-//   });
-// });

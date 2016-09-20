@@ -9,7 +9,7 @@ class JobsController < ApplicationController
     end
 
     def create
-      # This is the magic stuff that will let us upload an image to Cloudinary when creating a new animal.
+      # This is the magic stuff that will let us upload an image to Cloudinary when creating a new job.
       job = Job.new(job_params)
       if params[:image] == true
       params[:job][:images].each do |image|
@@ -49,4 +49,16 @@ class JobsController < ApplicationController
     def job_params
       params.require(:job).permit(:task_title, :task_description, :task_location, :due_date, :start_time, :workers_required, :budget, :user_id, :applicant_id, :category_id, :category_ids, :rating_id)
     end
+    
+    def search
+
+    @user = User.find_by(:name => "Bob")
+
+    if params[:search_origin] || params[:search_destination]
+      @flights = Flight.search(params[:search_origin], params[:search_destination])
+    else
+      @flights = Flight.all.order("date desc")
+
+    end
+  end
 end
