@@ -16,9 +16,15 @@
         <%= f.text_field :task_description, :required => true %>
       </p>
       <p>
+        <%= form_tag jobs_path, :method => :get do %>
+        <%= text_field_tag :search, params[:search] %>
         <%= f.label :task_location, "Location of job" %>
         <%= f.text_field :task_location, :required => true %>
       </p>
+
+
+
+
 
       <p>
         <%= f.label :due_date, "Date of job" %>

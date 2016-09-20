@@ -17,6 +17,10 @@
 #
 
 class Job < ActiveRecord::Base
+  # geocoder
+  geocoded_by :task_location
+  after_validation :geocode, :if => :task_location_changed?
+
   belongs_to :user
   has_many :applicants
   has_many :comments
@@ -36,5 +40,6 @@ class Job < ActiveRecord::Base
   def completed?
     self.status == "completed"
   end
+
 
 end

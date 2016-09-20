@@ -2,6 +2,12 @@ class JobsController < ApplicationController
 
     def index
       @jobs = Job.all
+      # geocoder
+      if params[:search].present?
+        @jobs = Job.near(params[:search], 50, :order => :distance)
+      else
+        @jobs = Job.all
+      end
     end
 
     def new
@@ -49,7 +55,7 @@ class JobsController < ApplicationController
     def job_params
       params.require(:job).permit(:task_title, :task_description, :task_location, :due_date, :start_time, :workers_required, :budget, :user_id, :applicant_id, :category_id, :category_ids, :rating_id)
     end
-    
+
     def search
 
     @user = User.find_by(:name => "Bob")
