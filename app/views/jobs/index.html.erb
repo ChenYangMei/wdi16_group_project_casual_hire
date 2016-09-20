@@ -1,6 +1,14 @@
 <body>
 
+  <%= form_tag(pages_search_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search_origin, params[:search_origin], placeholder: "Origin" %>
+    <%= text_field_tag :search_destination, params[:search_destination], placeholder: "Destination" %>
+    <%= submit_tag "Let's Go!", :name => nil %>
+  <% end %>
 
+  <% if @flights.blank? %>
+    <h4>There are no flights available from <%= params[:search_origin] %> to <%= params[:search_destination]%>.</h4>
+  <% else %>
 
 
   <div class="recipe-details">

@@ -46,4 +46,16 @@ class JobsController < ApplicationController
     def job_params
       params.require(:job).permit(:task_title, :task_description, :task_location, :due_date, :start_time, :workers_required, :budget, :user_id, :applicant_id, :category_id, :category_ids, :rating_id)
     end
+    
+    def search
+
+    @user = User.find_by(:name => "Bob")
+
+    if params[:search_origin] || params[:search_destination]
+      @flights = Flight.search(params[:search_origin], params[:search_destination])
+    else
+      @flights = Flight.all.order("date desc")
+
+    end
+  end
 end
