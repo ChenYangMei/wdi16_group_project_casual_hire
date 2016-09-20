@@ -23,7 +23,7 @@ class Job < ActiveRecord::Base
   has_and_belongs_to_many :categories
   has_many :ratings, as: :rateable
 
-  enum role: [:proposal, :in_progress, :completed]
+  enum status: [:proposal, :in_progress, :completed]
 
   def proposal?
     self.status == "proposal"
@@ -35,6 +35,10 @@ class Job < ActiveRecord::Base
 
   def completed?
     self.status == "completed"
+  end
+
+  def status_c
+    self.status.capitalize
   end
 
 end
