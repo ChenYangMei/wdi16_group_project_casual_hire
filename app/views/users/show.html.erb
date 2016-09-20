@@ -24,8 +24,9 @@
       </ul>
 
 <h5>Ratings for <%= @user.name %></h5>
-      <ul>
-        <% @user.ratings do |a| %>
-            <li><%= a.body %></li>
-        <% end %>
-      </ul>
+    <%= @user.ratings.to_json%>
+      <!-- <ul>
+        <#% @user.ratings do |a| %>
+            <li><#%= a.to_json %></li>
+        <#% end %>
+      </ul> -->
