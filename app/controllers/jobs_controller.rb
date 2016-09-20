@@ -15,7 +15,7 @@ class JobsController < ApplicationController
     end
 
     def create
-      # This is the magic stuff that will let us upload an image to Cloudinary when creating a new animal.
+      # This is the magic stuff that will let us upload an image to Cloudinary when creating a new job.
       job = Job.new(job_params)
       if params[:image] == true
       params[:job][:images].each do |image|
