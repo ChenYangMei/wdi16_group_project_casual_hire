@@ -5,8 +5,7 @@
   <li>Email: <%= @user.email %></li>
   <li>Role: <%= @user.role_c %></li>
   <li>Member Since: <%= @user.created_at.strftime("%B '%y") %></li>
-
-  <%= cl_image_tag(@user.images) %>
+  <!-- <#%= cl_image_tag(@user.images) %> -->
 </ul>
 
 <!-- This will need to be jobs completed -->
@@ -26,8 +25,8 @@
 
 <h5>Ratings for <%= @user.name %></h5>
     <%= @user.ratings.to_json%>
-      <!-- <ul>
-        <#% @user.ratings do |a| %>
-            <li><#%= a.to_json %></li>
-        <#% end %>
-      </ul> -->
+      <ul>
+        <% @user.ratings do |a| %>
+            <li><%= a.body %></li>
+        <% end %>
+      </ul>

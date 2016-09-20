@@ -3,17 +3,37 @@
 
 
 <ul>
-  <% @ratings.each do |a| %>
-  <%= a.to_json %>
-  <%= a.rateable.to_json %>
+  <% @ratings.each do |rating| %>
+    <% if rating.is_user_rating? %>
+      This is a User rating,
+      it was attached to
+      <%= link_to( rating.get_user.name, rating.get_user ) %>
+      <br>
+      This user has the following ratings:
+      <ul>
+        <% rating.get_user.ratings.each do |r| %>
+          <li><%= r.body %></li>
+        <% end %>
+      </ul>
 
-    <li>
-        <p>User: <%= a.rateable.user.name %></p>
-        <p>Job: <%= a.rateable.task_title %></p>
-        <p>Rating: <%= a.score %></p>
-        <p>Review: <%= a.body %></p>
-        <br>
-    </li>
+
+    <% else %>
+      This is a Job rating,
+      it was attached to
+      <%= link_to( rating.get_job.task_title, rating.get_job ) %>
+      <br>
+      This job has the following ratings:
+      <ul>
+        <% rating.get_job.ratings.each do |r| %>
+          <li><%= r.body %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <br />
+    <%= rating.to_json %>
+    <br>
+    <br>
+    <br>
   <% end %>
 </ul>
 
