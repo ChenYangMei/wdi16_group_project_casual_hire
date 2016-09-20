@@ -1,2 +1,14 @@
 <h1>Applicants#show</h1>
 <p>Find me in app/views/applicants/show.html.erb</p>
+
+<h1>A list of applicants for <%= @applicant.job.task_title %></h1>
+
+<h4>Applicants under <%= @applicant.job.task_title %></h4>
+
+<% @applicant.each do |b| %>
+  Title: <%= link_to(b.task_title, job_path( b )) %>
+    Posted by: <%= b.user.name %>
+  <br>
+<% end %>
+
+<!-- .order("created_at ASC") -->

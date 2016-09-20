@@ -6,10 +6,11 @@
 
 <p>Job Title: <%= @job.task_title %></p>
 
+
 <div class="scroller">
-<% @job.images.each do |image| %>
-  <%= cl_image_tag(image) %>
-<% end %>
+  <% @job.images.each do |image| %>
+    <%= cl_image_tag(image) %>
+  <% end %>
 </div>
 
 <p>Description: <%= @job.task_description %></p>
@@ -18,6 +19,7 @@
 <p>Time of Job: <%= @job.start_time %></p>
 <p>No. of people Required: <%= @job.workers_required %></p>
 <p>Budget: <%= "$#{@job.budget}" %></p>
+
 
 <% if @job.categories.count == 0 %>
   No Categories
@@ -42,6 +44,7 @@
 <div class="button" id="makeAnOffer">
   Make an Offer
 </div>
+
 
 <!-- Form is creating an application for the current job -->
   <div id="offer">

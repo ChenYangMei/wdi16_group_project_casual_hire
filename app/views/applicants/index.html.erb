@@ -4,7 +4,7 @@
       User: <%= a.user.name %>
     </li>
     <li>
-      Job: <%= a.job.task_title %>
+      <a class="button" <%= link_to(a.job.task_title, applicant_path( a )) %>
     </li>
     <li>
       Quote: <%= a.quote %>
@@ -12,5 +12,6 @@
     <li>
       Description: <%= a.description %>
     </li>
+    <br>
   <% end %>
 </ul>
