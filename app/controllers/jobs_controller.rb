@@ -11,12 +11,13 @@ class JobsController < ApplicationController
     def create
       # This is the magic stuff that will let us upload an image to Cloudinary when creating a new animal.
       job = Job.new(job_params)
-
+      if params[:image] == true
       params[:job][:images].each do |image|
         req = Cloudinary::Uploader.upload(image)
         job.images << req["url"]
       end
       job.save
+      end
       redirect_to job_path(job)
     end
 

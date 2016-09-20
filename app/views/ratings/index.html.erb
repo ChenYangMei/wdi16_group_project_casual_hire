@@ -4,8 +4,8 @@
 
 <ul>
   <% @ratings.each do |a| %>
-  <!-- <#%= a.to_json %>
-  <#%= a.rateable.to_json %> -->
+  <%= a.to_json %>
+  <%= a.rateable.to_json %>
 
     <li>
         <p>User: <%= a.rateable.user.name %></p>
