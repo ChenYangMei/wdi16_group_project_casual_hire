@@ -33,6 +33,8 @@ class JobsController < ApplicationController
 
     def show
       @job = Job.find params[:id]
+      @applicant = Applicant.new
+      @applicants = Applicant.all
       @comment = @job.comments.build(:job => @job)
     end
 

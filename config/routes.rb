@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   resources :categories, :except => [:edit]
   resources :applicants
 
+
   resources :jobs do
+    resources :applicants, :only => [:create]
     resources :comments
   end
 

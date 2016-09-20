@@ -34,10 +34,34 @@
 
       <!-- Tweet link -->
       <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-      
-      <div class="button" id="offer">
+
+      <div class="button" id="makeAnOffer">
         Make an Offer
       </div>
+
+  <!-- Form is creating an application for the current job -->
+    <div id="offer">
+      <%= form_for([@job, @applicant], remote: true) do |f| %>
+        <p>
+          <%= f.label :quote %>
+          <%= f.text_field :quote, :required => true %>
+        </p>
+        <p>
+          <%= f.label :description %>
+          <%= f.text_field :description %>
+        </p>
+        <p id="submit_offer">
+          <%= f.submit "Submit" %>
+        </p>
+      <% end %>
+    </div>
+
+  <!-- Unserscore Template to display data -->
+    <script type="underscore/template" id="offerDisplayTemplate">
+      <p>Your Quote: <%%= quote %></p>
+      <p>Your Description: <%%= description %></p>
+    </script>
+
 
 <table>
   <h5>Comments</h5>

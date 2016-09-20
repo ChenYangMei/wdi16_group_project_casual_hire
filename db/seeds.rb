@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.destroy_all
-u1 = User.create :name => "Andrew", :email => "andrew@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 0
+u1 = User.create :name => "Andrew", :email => "andrew@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 0, :image =>"s42z35fu6lgw8rprmblu"
 u2 = User.create :name => "Arpan", :email => "arpan@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 2
 u3 = User.create :name => "Yangmei", :email => "yangmei@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 1
 u4 = User.create :name => "Badger", :email => "badger@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 2
@@ -22,7 +22,7 @@ p "Total users :#{User.all.count}"
 
 Job.destroy_all
 
-j1 = Job.create :task_title =>"Handyman", :task_description =>"Change all the taps",     :task_location => "Penrith", :due_date => "2016/09/24", :budget => 45.34
+j1 = Job.create :task_title =>"Handyman", :task_description =>"Change all the taps",     :task_location => "Penrith", :due_date => "2016/09/24", :budget => 45.34 ,:images => "s42z35fu6lgw8rprmblu"
 
 j2 = Job.create :task_title =>"Home & Garden", :task_description =>"Mow the lawn",     :task_location => "Sydney", :due_date => "2016/09/30", :budget => 90.00
 
