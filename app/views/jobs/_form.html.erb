@@ -7,8 +7,8 @@
       </p>
       <p>Please add the categories related to your job.
             <%= hidden_field_tag "job[category_ids][]", nil %>
-              <% Category.all.each do |category| %>
-                <div class="button"><%= check_box_tag "job[category_ids][]", category.id, @job.category_ids.include?(category.id), id: dom_id(category) %><%= label_tag dom_id(category), category.name %></div>
+                <% Category.all.each do |category| %>
+                  <div class="button"><%= check_box_tag "job[category_ids][]", category.id, @job.category_ids.include?(category.id), id: dom_id(category) %><%= label_tag dom_id(category), category.name %></div>
             <% end %>
       </p>
       <p>
@@ -16,16 +16,12 @@
         <%= f.text_field :task_description, :required => true %>
       </p>
       <p>
-        <%= form_tag jobs_path, :method => :get do %>
-        <%= text_field_tag :search, params[:search] %>
-        <%= f.label :task_location, "Location of job" %>
-        <%= f.text_field :task_location, :required => true %>
+          <%= form_tag jobs_path, :method => :get do %>
+          <%= text_field_tag :search, params[:search] %>
+          <%= f.label :task_location, "Location of job" %>
+          <%= f.text_field :task_location, :required => true %>
+        <% end %>
       </p>
-
-
-
-
-
       <p>
         <%= f.label :due_date, "Date of job" %>
         <%= f.date_field :due_date, :required => true %>
