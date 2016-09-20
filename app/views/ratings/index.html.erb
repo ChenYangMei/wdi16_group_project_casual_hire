@@ -4,21 +4,26 @@
 
 <ul>
   <% @ratings.each do |a| %>
+  <!-- <#%= a.to_json %>
+  <#%= a.rateable.to_json %> -->
+
     <li>
-        <!-- <p>User: </%= a.user.name %></p> -->
+        <p>User: <%= a.rateable.user.name %></p>
+        <p>Job: <%= a.rateable.task_title %></p>
         <p>Rating: <%= a.score %></p>
         <p>Review: <%= a.body %></p>
+        <br>
     </li>
   <% end %>
 </ul>
 
 
 <ul>
-  <% @rateable.each do |a| %>
+  <%# @rateable.each do |a| %>
     <li>
         <!-- <p>User: </%= a.user.name %></p> -->
         <!-- <p>Rating: </%= a.ratings.score %></p> -->
 
     </li>
-  <% end %>
+  <%# end %>
 </ul>

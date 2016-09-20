@@ -2,7 +2,7 @@ class RatingsController < ApplicationController
 
   def index
     @ratings = Rating.all
-    @rateable = find_rateable
+    # @rateable = find_rateable
   end
 
   def show
@@ -42,8 +42,8 @@ private
   end
 
   def find_rateable
-    params.each do |name, value|
-      if name =~ /(.+)_id$/
+    @ratings.each do |name, value|
+      if name =~ /(.+)_id$/ # Regular Expression
         return $1.classify.constantize.find(value)
       end
     end
