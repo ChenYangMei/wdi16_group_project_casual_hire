@@ -1,6 +1,6 @@
+<div id="buttons"></div>
+
 <body>
-
-
 
 <!-- geocoder -->
   <%= form_tag jobs_path, :method => :get do %>
@@ -26,7 +26,7 @@
 
         <div class ="thumbnail_image">
 
-          <p>Task Location: <%= a.task_location %></p>
+          <p>Location: <%= a.task_location %></p>
           <p>Budget: <%= "$#{a.budget}" %></p>
           <p>Posted by: <%= a.user.name %></p>
   </div>
