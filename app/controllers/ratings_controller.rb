@@ -1,5 +1,7 @@
 class RatingsController < ApplicationController
 
+  before_action :fetch_user, :authorise, :only => [:index, :show]
+
   def index
     @ratings = Rating.all
     @rateable = find_rateable
@@ -15,7 +17,7 @@ class RatingsController < ApplicationController
 
   def create
     @rateable = find_rateable
-    # @rating = @rateable.ratings.build(rating_params)
+    # @rating = @rateable.ratings.build(rating_params) - updated below 
     # @rating = Rating.create( rating_params )
     # redirect_to @rating
     job = Job.find(params[:job_id])

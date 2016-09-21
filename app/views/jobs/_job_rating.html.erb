@@ -2,7 +2,7 @@
   Submit a rating
 </div>
 <!-- Including Template to show job_Ratings/review -->
-  <div id="rating">Rate this job
+  <div class="rating">This job is complete - Please rate this user
     <%= form_for @rating, :url => rate_job_path(@job.id) do |f| %>
 
       <p>
@@ -15,7 +15,7 @@
         <%= f.text_field :body %>
         <% f.hidden_field :job_id %>
       </p>
-      <p id="submit_offer">
+      <p id="submit_job_rating">
         <%= f.submit "Submit" %>
       </p>
     <% end %>

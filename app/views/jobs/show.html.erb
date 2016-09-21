@@ -159,10 +159,18 @@
 </div>
 
 
-<% if @job.completed?%>
-  <%= render( :partial => "job_rating" ) %>
-  <%= render( :partial => "user_rating" ) %>
-<% end %>
+<div id = "rating_show">
+  <% if @job.completed? && @current_user.id === @job.user.id %>
+    <p>
+      <%= render( :partial => "user_rating" ) %>
+    </p>
+  <% elsif @job.completed? && @current_user.id === @job.applicant.name %>
+    <p>
+      <%= render( :partial => "job_rating" ) %>
+    </p>
+  <% end %>
+</div>
+
 
 <!-- geocoder  -->
 <%= image_tag "http://maps.google.com/maps/api/staticmap?size=850x300&sensor=false&zoom=16&markers=#{@job.latitude}%2C#{@job.longitude}",:class => "map-geocoder" %>

@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'cloudinary'
+gem 'materialize-sass'
+gem 'geocoder'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
@@ -38,10 +41,6 @@ group :development, :test do
   gem 'byebug'
   gem 'annotate'
   gem 'pry-rails'
-  gem 'cloudinary'
-  gem 'materialize-sass'
-  gem 'geocoder'
-
 end
 
 group :development do

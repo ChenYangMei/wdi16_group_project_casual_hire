@@ -22,9 +22,9 @@ class JobsController < ApplicationController
       job.category_ids = params[:job][:category_ids]
       job.save
 
-      if params[:job][:image] == true
+      if params[:image] == true
         # This is the magic stuff that will let us upload an image to Cloudinary when creating a new job.
-        params[:job][:images].each do |image|
+        params[:images].each do |image|
             req = Cloudinary::Uploader.upload(image)
             job.images << req["public_id"]
             job.save
@@ -74,10 +74,11 @@ class JobsController < ApplicationController
       redirect_to jobs_path
     end
 
+    # Created to allow ratings under rating model for a job
     def rate
       @rating = Rating.new(rating_params)
       @rating.user_id = @current_user.id
-
+    # Check to make sure user is not the employee
       if params[:user_id].to_i == @current_user.id
         render :json => { :moron => "You" }
         return
@@ -110,13 +111,14 @@ class JobsController < ApplicationController
     end
 
     private
+    # References for the rating
     def rating_params
       params.require(:rating).permit(:body, :score, :job_id, :user_id)
     end
 
 
     def job_params
-      params.require(:job).permit(:task_title, :task_description, :task_location, :due_date, :start_time, :workers_required, :budget, :user_id, :applicant_id, :category_id, :rating_id, :category_ids => [], :images => [])
+      params.require(:job).permit(:task_title, :task_description, :task_location, :due_date, :start_time, :workers_required, :budget, :user_id, :applicant_id, :category_id, :rating_id, :category_ids => [])
     end
 
 
