@@ -69,6 +69,25 @@ class UsersController < ApplicationController
     end
   end
 
+  def rate
+    @rating = Rating.new(rating_params)
+    @rating.job_id = params[:job_id]
+
+    if params[:user_id].to_i == @current_user.id
+      render :json => { :moron => "You" }
+      return
+    end
+
+    User.find_by(:id => params[:rating][:user_id]).ratings << @rating
+
+      if @rating.save
+        render json: @rating
+      else
+        render json: @rating.errors, status: :unprocessable_entity
+      end
+      redirect_to job
+  end
+
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin, :role, :job_id, :comment_id, :applicant_id, :rating_id)

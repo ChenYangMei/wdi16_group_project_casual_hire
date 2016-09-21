@@ -1,9 +1,9 @@
 <div class="controls">
- <%= link_to "All Jobs", jobs_path %>
- <%= link_to "Edit work", edit_job_path( @job.id ) %>
- <%= link_to "Delete work", @job, :method => :delete, :data => { :confirm => "Are you sure?" } %>
+  <% if @current_user == @user %>
+  <%= link_to "Edit work", edit_job_path( @job.id ) %>
+  <%= link_to "Delete work", @job, :method => :delete, :data => { :confirm => "Are you sure?" } %>
 </div>
-
+  <% end %>
 <p>Job Title: <%= @job.task_title %></p>
 
 <div class="scroller">
@@ -75,11 +75,14 @@
     <% end %>
   </div>
 
-<!-- Unserscore Template to display data -->
+<!-- underscore Template to display offer data -->
   <script type="underscore/template" id="offerDisplayTemplate">
     <p>Your Quote: <%%= quote %></p>
     <p>Your Description: <%%= description %></p>
   </script>
+
+<%= render( :partial => "job_rating" ) %>
+<%= render( :partial => "user_rating" ) %>
 
 <table>
 <h5>Comments</h5>

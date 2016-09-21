@@ -12,6 +12,12 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  # Ratings need to be broken into rate_user and rate_job.
+
+  post '/jobs/:id/rate' => 'jobs#rate', :as => "rate_job"
+  post '/job/:job_id/rate' => 'users#rate', :as => "rate_user"
+
+
   # Session
   get '/login' => 'session#new', :as => "login"
   post '/login' => 'session#create'

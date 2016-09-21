@@ -13,7 +13,7 @@
 </ul>
 
 <!-- This will need to be jobs completed -->
-<div>Job count: <%= @user.jobs.count%></div>
+<div>Jobs Posted: <%= @user.jobs.count%></div>
     <div>Last Job:
       <% if @user.jobs.count > 0 %>
       <%= time_ago_in_words(@user.jobs.last.created_at) %>
@@ -28,9 +28,9 @@
       </ul>
 
 <h5>Ratings for <%= @user.name %></h5>
-    <%= @user.ratings.to_json%>
       <ul>
-        <% @user.ratings do |a| %>
-            <li><%= a.body %></li>
+        <% @user.ratings.each do |a| %>
+            <li>Score: <%= a.score %></li>
+            <li>Review: <%= a.body %></li>
         <% end %>
       </ul>
