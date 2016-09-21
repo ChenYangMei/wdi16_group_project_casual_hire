@@ -65,11 +65,7 @@
     <% end %>
   </div>
 
-
 <!-- underscore Template to display offer data -->
-
-<!-- Underscore Template to display data -->
-
   <script type="underscore/template" id="offerDisplayTemplate">
     <p>Your Quote: <%%= quote %></p>
     <p>Your Description: <%%= description %></p>
@@ -92,7 +88,7 @@
       <% end %>
 
       <!-- Select an applicant only if there're more than 0 applicant-->
-      <%# if @job.applicants.length > 0 && @current_user.id === @job.user.id %>
+      <% if @job.applicants.length > 0 && @current_user.id === @job.user.id %>
         <div id="select_applicant">
           <p id="job_id"><%= @job.id %></p>
           <!-- Sending an update request to job_controller. Using remote:true to include aJax request within this form -->
@@ -110,7 +106,7 @@
             </script>
 
         </div>
-      <%# end %>
+      <% end %>
 
     </div>
   <% end %>

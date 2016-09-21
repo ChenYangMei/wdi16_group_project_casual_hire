@@ -104,13 +104,14 @@ class JobsController < ApplicationController
         redirect_to jobs_path
     end
 
-    def increment
+    def status_in_progress
         @job = Job.find params[:id]
         @job.status = 1
         @job.save
 
         render :json => @job
     end
+    
 
     private
         def job_params
