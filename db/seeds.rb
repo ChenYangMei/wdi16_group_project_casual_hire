@@ -124,11 +124,27 @@ r2 = Rating.create :body => "I enjoyed working with this user but suggest they c
 r3 = Rating.create :body => "The user was average", :score => 3, :user_id => u2.id
 r4 = Rating.create :body => "Below average experience", :score => 2, :user_id => u8.id
 r5 = Rating.create :body => "I want to marry this person", :score => 5, :user_id => u6.id
-r6 = Rating.create :body => "Turned up late and still didn't do everything", :score => 1, :user_id => u2.id
+r6 = Rating.create :body => "Turned up late and still didn't do everything", :score => 1, :job_id => j2.id
+r7 = Rating.create :body => "Turned up late and still didn't do everything", :score => 1, :job_id => j1.id
+r8 = Rating.create :body => "Turned up late and still didn't do everything", :score => 1, :user_id => u2.id
 
 j1.ratings << r1
 j2.ratings << r2
 j3.ratings << r3
 j4.ratings << r4
 j5.ratings << r5
-j6.ratings << r6
+j6.ratings << r8
+
+u1.ratings << r7 # Employer has just rated a user
+u2.ratings << r6
+
+# THIS RELIES ON HAVING A USER_ID OR A JOB_ID ON THE RATING
+  # If the create rating request came from a User show, add the job_id
+  # /jobs/4/rate
+  # If the create rating request came from a Job show, add the user_id
+  # /users/4/rate
+
+# p r8.is_job_rating?
+# p r8.is_user_rating?
+# p r8.get_job
+# p r8.get_user

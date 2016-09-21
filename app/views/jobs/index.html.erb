@@ -1,26 +1,19 @@
 <body>
 
+
   <div class="recipe-details">
   <% @jobs.each do |a| %>
-  <!-- Take explicit height off card small in your CSS -->
-  <!-- Take width off card small in your css -->
-  <!-- Put your image in a div with display: inline-block -->
-  <!-- Group your h5, br, and all the other stuff you want to appear next to the image in a div with the same class as the div you've wrapped around your image -->
   <div class="card small" id= "cardsmall">
-    <!-- Card Content -->
 
         <h5>Job Title: <%= link_to( a.task_title, "/jobs/#{a.id}" ) %></h5>
           <%= cl_image_tag(a.images.first) %>
-        <!-- </div> -->
-        <!-- <br> -->
-      <div class ="thumbnail_image">
+
+        <div class ="thumbnail_image">
 
           <p>Task Location: <%= a.task_location %></p>
           <p>Budget: <%= "$#{a.budget}" %></p>
-<!--
-        <%#= link_to "view job", job_path( a.id ), :method => :get ,:class => "waves-effect waves-light btn"%> -->
 
-    </div>
+  </div>
     <br>
     <% if a.categories.count == 0 %>
       No categories
@@ -33,5 +26,3 @@
   </div>
   <% end %>
   </div>
-
-</body>
