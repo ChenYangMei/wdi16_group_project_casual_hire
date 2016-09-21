@@ -34,10 +34,10 @@
 <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
-
+<!-- Display Job Status -->
 <div class="status">
   <p>
-    Status: <%= @job.status_c %>
+    Status: <span><%= @job.status_c %></span>
   </p>
 </div>
 
@@ -90,9 +90,9 @@
       <% end %>
 
       <!-- Select an applicant only if there're more than 0 applicant-->
-      <% if @job.applicants.length > 0 %>
+      <%# if @job.applicants.length > 0 && @current_user.id === @job.user.id %>
         <div id="select_applicant">
-
+          <p id="job_id"><%= @job.id %></p>
           <!-- Sending an update request to job_controller. Using remote:true to include aJax request within this form -->
           <%= form_for(@job, remote: true, format: :json) do |f| %>
           <p>
@@ -108,7 +108,7 @@
             </script>
 
         </div>
-      <% end %>
+      <%# end %>
 
     </div>
   <% end %>

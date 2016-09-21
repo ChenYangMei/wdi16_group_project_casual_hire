@@ -3,6 +3,7 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready(function() {
+  $("#job_id").hide();
   $("#offer").hide();
 
   $("#makeAnOffer").on("click", function(){
@@ -26,7 +27,19 @@ $(document).ready(function() {
   $("#new_applicant").on( "ajax:success", handleData )
     .on( "ajax:error", handleError );
 
+  var handleUpdateIncrement = function (data) {
+    $(".status span").text( data.status );
+  };
 
+  //Change Job Status
+  var changeJobStatus = function(){
+    var jobId = parseInt( $("#job_id").text() )
+    $.ajax({
+      url: "/jobs/" + jobId + "/increment",
+      type: 'PUT',
+      format: 'JSON',
+    }).done( handleUpdateIncrement );
+  };
 
   // After select an applicant and submit, replace the drop down box with the selected information.
 
@@ -36,12 +49,16 @@ $(document).ready(function() {
     var $applicantDisplayTemplate = $("#applicantDisplayTemplate").html();
     var dynamicMarkupTemplate = _.template( $applicantDisplayTemplate );
     var compiledTemplate = dynamicMarkupTemplate( data );
-  
+
     $(".edit_job").html(compiledTemplate);
+
+    changeJobStatus();
   };
 
   $(".edit_job").on( "ajax:success", handleJobApplicant )
     .on( "ajax:error", handleError );
+
+
 
 
 });
