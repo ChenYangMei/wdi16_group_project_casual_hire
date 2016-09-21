@@ -11,14 +11,6 @@ class JobsController < ApplicationController
     def create
 
       job = Job.new(job_params)
-
-
-      if params[:image] == true
-      params[:job][:images].each do |image|
-        req = Cloudinary::Uploader.upload(image)
-        job.images << req["url"]
-      end
-
       job.category_ids = params[:job][:category_ids]
       job.save
 
@@ -69,7 +61,6 @@ class JobsController < ApplicationController
     end
 
     def destroy
-
       job = Job.find params[:id]
       job.destroy
       redirect_to jobs_path
@@ -96,12 +87,7 @@ class JobsController < ApplicationController
 
     private
     def job_params
-      params.require(:job).permit(:task_title, :task_description, :task_location, :due_date, :start_time, :workers_required, :budget, :user_id, :applicant_id, :category_id, :category_ids, :rating_id)
-    end
-
-        job = Job.find params[:id]
-        job.destroy
-        redirect_to jobs_path
+      params.require(:job).permit(:task_title, :task_description, :task_location, :due_date, :start_time, :workers_required, :budget, :user_id, :applicant_id, :category_id, :rating_id, :category_ids => [])
     end
 
     def status_in_progress
@@ -112,21 +98,5 @@ class JobsController < ApplicationController
         render :json => @job
     end
     
-
-    private
-        def job_params
-          params.require(:job).permit(:task_title, :task_description, :task_location, :due_date, :start_time, :workers_required, :budget, :user_id, :applicant_id, :category_id, :rating_id, :category_ids => [])
-        end
-
-
-    # def search
-    #   @user = User.find_by(:name => "Bob")
-    #
-    #   if params[:search_origin] || params[:search_destination]
-    #     @flights = Flight.search(params[:search_origin], params[:search_destination])
-    #   else
-    #     @flights = Flight.all.order("date desc")
-    #   end
-    # end
 
 end
