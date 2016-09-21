@@ -1,5 +1,5 @@
 <div class="controls">
-  <% if @current_user == @user %>
+  <% if @current_user.id == @job.user_id %>
   <%= link_to "Edit work", edit_job_path( @job.id ) %>
   <%= link_to "Delete work", @job, :method => :delete, :data => { :confirm => "Are you sure?" } %>
 </div>
@@ -73,10 +73,7 @@
   </script>
 
 
-<% if @job.completed?%>
-  <%= render( :partial => "job_rating" ) %>
-  <%= render( :partial => "user_rating" ) %>
-<% end %>
+
   <!-- If the user is an employer, show people who have applied for the job, and choose an applicant. -->
   <% if @current_user.employer? %>
     <div id="applicants">
@@ -113,6 +110,10 @@
     </div>
   <% end %>
 
+  <% if @job.completed?%>
+    <%= render( :partial => "job_rating" ) %>
+    <%= render( :partial => "user_rating" ) %>
+  <% end %>
 
 <table>
 <h5>Comments</h5>
