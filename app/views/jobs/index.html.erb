@@ -28,7 +28,7 @@
 
           <p>Task Location: <%= a.task_location %></p>
           <p>Budget: <%= "$#{a.budget}" %></p>
-
+          <p>Posted by: <%= a.user.name %></p>
   </div>
     <br>
     <% if a.categories.count == 0 %>
