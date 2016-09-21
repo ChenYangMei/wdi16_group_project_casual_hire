@@ -105,6 +105,6 @@ class JobsController < ApplicationController
 
         render :json => @job
     end
-    
+
 
 end
