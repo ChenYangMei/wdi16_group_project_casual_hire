@@ -6,8 +6,11 @@ Rails.application.routes.draw do
   resources :categories, :except => [:edit]
   resources :applicants
 
-  put '/jobs/:id/increment' => 'jobs#increment'
-  patch '/jobs/:id/increment' => 'jobs#increment'
+  put '/jobs/:id/status_in_progress' => 'jobs#status_in_progress'
+  patch '/jobs/:id/status_in_progress' => 'jobs#status_in_progress'
+
+  put '/jobs/:id/status_completed' => 'jobs#status_completed'
+  patch '/jobs/:id/status_completed' => 'jobs#status_completed'
 
   resources :jobs do
     resources :applicants, :only => [:create]
