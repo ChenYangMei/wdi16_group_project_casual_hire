@@ -1,0 +1,22 @@
+<div class="button" id="submitARating">
+  Submit a rating
+</div>
+<!-- Including Template to show job_Ratings/review -->
+  <div id="rating">Rate this job
+    <%= form_for @rating, :url => rate_job_path(@job.id) do |f| %>
+
+      <p>
+        <!-- <%#= f.collection_select :user_id, @job, :user_id, :name %> -->
+        <%= f.label :score %>
+        <%= f.text_field :score, :required => true %>
+      </p>
+      <p>
+        <%= f.label :body %>
+        <%= f.text_field :body %>
+        <% f.hidden_field :job_id %>
+      </p>
+      <p id="submit_offer">
+        <%= f.submit "Submit" %>
+      </p>
+    <% end %>
+  </div>

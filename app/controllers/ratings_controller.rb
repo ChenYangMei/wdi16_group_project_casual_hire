@@ -2,7 +2,7 @@ class RatingsController < ApplicationController
 
   def index
     @ratings = Rating.all
-    # @rateable = find_rateable
+    @rateable = find_rateable
   end
 
   def show
@@ -15,9 +15,25 @@ class RatingsController < ApplicationController
 
   def create
     @rateable = find_rateable
-    @rating = @rateable.ratings.build(rating_params)
+    # @rating = @rateable.ratings.build(rating_params)
     # @rating = Rating.create( rating_params )
     # redirect_to @rating
+    job = Job.find(params[:job_id])
+    @rating = Rating.new(rating_params)
+
+      if @rating.save
+        @info = {
+          :quote => @rating.score,
+          :description => @rating.body,
+          :user_id => @current_user.id,
+          :job_id => job.id
+        }
+        render json: @info
+      else
+        render json: @rating.errors, status: :unprocessable_entity
+      end
+
+    end
   end
 
   def edit
@@ -48,4 +64,3 @@ private
       end
     end
   end
-end

@@ -21,7 +21,7 @@ class Category < ActiveRecord::Base
 #
 #   def get_sorted_comments
 #       self.comments.sort_by do |c|
-#           c.get_upvotes.size
+#           c.created_at
 #       end
 #   end
 
