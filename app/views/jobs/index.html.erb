@@ -1,6 +1,3 @@
-<body>
-
-
 
 <!-- geocoder -->
   <%= form_tag jobs_path, :method => :get do %>
@@ -17,28 +14,29 @@
   <!-- geocoder -->
 
 
-  <div class="recipe-details">
+<div>
   <% @jobs.each do |a| %>
-  <div class="card small" id= "cardsmall">
+    <div class="card small" id= "cardsmall">
 
-        <h5>Job Title: <%= link_to( a.task_title, "/jobs/#{a.id}" ) %></h5>
-          <%= cl_image_tag(a.images.first) %>
+      <div class="user">
+        <%= cl_image_tag(a.user.image) %>
+        <p>Posted by: <%= link_to(a.user.name, user_path(a.user)) %></p>
+      </div>
 
-        <div class ="thumbnail_image">
+      <p><%= link_to( a.task_title, "/jobs/#{a.id}" ) %></p>
 
-          <p>Task Location: <%= a.task_location %></p>
-          <p>Budget: <%= "$#{a.budget}" %></p>
+      <p>Location: <%= a.task_location %></p>
+      <p>Budget: <%= "$#{a.budget}" %></p>
 
-  </div>
-    <br>
-    <% if a.categories.count == 0 %>
-      No categories
-      <% else %>Categories: <% a.categories.each do |b| %>
-      <a class="button" <%= link_to(b.name, category_path(b)) %></a>
-      <% end %> <br>
-    <% end %>
+      <% if a.categories.count == 0 %>
+        No categories
+      <% else %>
+        Categories: <% a.categories.each do |b| %>
+        <a class="button" <%= link_to(b.name, category_path(b)) %></a>
+        <% end %>
+        <br>
+      <% end %>
 
-
-  </div>
+    </div>
   <% end %>
-  </div>
+</div>

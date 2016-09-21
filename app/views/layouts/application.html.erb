@@ -8,33 +8,35 @@
   <!-- <%#= cloudinary_js_config %> only for uploading images with ajax -->
 </head>
 <body>
+  <div class="wrapper">
 
   <nav>
-    <%= link_to("All Jobs", jobs_path) %> |
-    <%= link_to("Categories", categories_path) %> |
-    <% unless @current_user.present? %>
-      <%= link_to("Sign Up", new_user_path) %> |
-      <%= link_to("Log In", login_path()) %> |
-    <% else %>
+    <div class="nav-wrapper #3f51b5 indigo">
+      <a href="#" class="brand-logo" id="logo">Casual Hire</a>
+      <ul class="right hide-on-med-and-down">
+        <li><%= link_to("All Jobs", jobs_path) %></li>
+        <li><%= link_to("Categories", categories_path) %></li>
 
-      <% if @current_user.admin? %>
-        <%= link_to("All Users", users_path) %>
-      <% end %>
+        <% unless @current_user.present? %>
+          <li><%= link_to("Sign Up", new_user_path) %></li>
+          <li><%= link_to("Log In", login_path()) %></li>
+        <% else %>
+          <% if @current_user.admin? %>
+            <li><%= link_to("All Users", users_path) %></li>
+          <% end %>
 
-      <% if @current_user.employer? %>
-        <%= link_to("Create a Job", new_job_path) %> |
-      <% end %>
-
-      You're logged in as <%= @current_user.role_c %> <%= link_to(@current_user.name, @current_user) %> |
-      <%= link_to("Log Out", logout_path(), :method => :delete ) %>
-
-
-  </div>
+          <% if @current_user.employer? %>
+            <li><%= link_to("Create a Job", new_job_path) %></li>
+          <% end %>
 
 
+          <li>You're logged in as <%= @current_user.role_c %></li>
+          <li><%= link_to(@current_user.name, @current_user) %></li>
+          <li id="navInfo"><%= link_to("Log Out", logout_path(), :method => :delete )  %></li>
+        <% end %>
+      </ul>
+    </div>
 
-
-    <% end %>
   </nav>
 
   <% if flash[:success] %>
@@ -53,5 +55,11 @@
     <%= yield %>
   </div>
 
+  <footer class="footer-copyright grey-text text-lighten-4 #3f51b5 indigo center">
+    <p>
+      Group project by Andrew, Arpan and Yangmei   © 2016 Copyright
+    </p>
+  </footer>
+</div>
 </body>
 </html>
