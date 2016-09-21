@@ -1,8 +1,8 @@
 <% if comment.user %>
 
 
-    <h5>Post by: <%= link_to comment.user.name, "/users/#{comment.user.id}" %> <%= image_tag comment.user.image %>
-    </h5>
+    <p class="user">Post by: <%= link_to comment.user.name, "/users/#{comment.user.id}" %> <%= cl_image_tag(comment.user.image) %>
+    </p>
 
     <p><%= comment.body %> </p>
     <p>Created:

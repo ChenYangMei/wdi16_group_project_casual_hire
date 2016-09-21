@@ -1,4 +1,4 @@
-<h1>Individual User:</h1>
+<h3>Individual User:</h3>
 
 <ul>
   <li>Name: <%= @user.name %></li>
@@ -6,7 +6,7 @@
   <li>Role: <%= @user.role_c %></li>
   <li>Member Since: <%= @user.created_at.strftime("%B '%y") %></li>
 
-  <%= cl_image_tag(@user.image) %>
+  <%= cl_image_tag(@user.image, :gravity=>"face", :crop => "fill", :width => 400, :height => 400) %>
 </ul>
 
 <!-- This will need to be jobs completed -->

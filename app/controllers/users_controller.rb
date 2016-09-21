@@ -13,32 +13,19 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def create
-    user = User.new(user_params)
-    # This is the magic stuff that will let us upload an image to Cloudinary when creating a new user.
-    # First, check to see if the user has attached an image for uploading
-    if params[:image].present?
-      # Then call Cloudinary's upload method, passing in the file in params
-      req = Cloudinary::Uploader.upload(params[:image])
-    # Using the public_id allows us to use Cloudinary's powerful image transformation methods.
-      user.image = req["public_id"]
-      user.save
-      redirect_to user_path(user)
+def create
+  user = User.create(user_params)
+  # This is the magic stuff that will let us upload an image to Cloudinary when creating a new user.
+  # First, check to see if the user has attached an image for uploading
+  if params[:file].present?
+    # Then call Cloudinary's upload method, passing in the file in params
+    req = Cloudinary::Uploader.upload(params[:file])
+  # Using the public_id allows us to use Cloudinary's powerful image transformation methods.
+    user.image = req["public_id"]
+    user.save
   end
-
-    @user = User.new(user_params)
-    @user = User.create(user_params)
-
-    # respond_to do |format|
-    #   if @user.save
-    #     # format.html { redirect_to @user, notice: 'User was successfully created.' }
-    #     format.json { render :show, status: :created, location: @user }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @user.errors, status: :unprocessable_entity }
-    #   end
-    # end
-  end
+  redirect_to user_path(user)
+end
 
   def edit
     @user = User.find params[:id]

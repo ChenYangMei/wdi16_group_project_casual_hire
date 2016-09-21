@@ -1,0 +1,55 @@
+#navInfo {
+  padding-right: 2em;
+}
+
+#completed, #editWork, #deleteWork{
+  background-color: #9fa8da;
+}
+
+#completed:hover, #editWork:hover, #deleteWork:hover{
+  background-color: #5c6bc0;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: #f8f8ff;
+}
+
+body a {
+  color: #3f51b5;
+}
+
+.user p{
+  display: inline-block;
+}
+.user img{
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 1em;
+}
+
+.control {
+  margin: 1.5em 0;
+}
+
+//footer fix
+.wrapper {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 5em;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+}
+
+#logo {
+  padding-left: 1em;
+}
