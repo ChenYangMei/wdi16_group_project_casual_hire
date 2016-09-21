@@ -20,8 +20,7 @@
       <p>Budget: <%= "$#{@job.budget}" %></p>
 
       <!-- geocoder  -->
-
-      <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@job.latitude}%2C#{@job.longitude}",:class => "map-geocoder" %>
+      <%= image_tag "http://maps.google.com/maps/api/staticmap?size=850x300&sensor=false&zoom=16&markers=#{@job.latitude}%2C#{@job.longitude}",:class => "map-geocoder" %>
 
       <h3>Nearby Jobs</h3>
       <ul>

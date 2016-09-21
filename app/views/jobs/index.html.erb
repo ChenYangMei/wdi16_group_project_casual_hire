@@ -3,11 +3,15 @@
 
 <!-- geocoder -->
   <%= form_tag jobs_path, :method => :get do %>
-    <p>
-      <%= text_field_tag :search, params[:search] %>
-      <%= number_field_tag :distance, params[:distance] %>
+    <p class ="text_field_tag">
+      <%= text_field_tag :search, params[:search], :placeholder => "Enter Address"  %>
+      </p>
+      <p class ="number_field_tag">
+      <%= number_field_tag :distance, params[:distance], :placeholder => "Distance"  %>
+      </p>
+      <p class ="search_by_location">
       <%= submit_tag "Search Near", :name => nil %>
-    </p>
+      </p>
   <% end %>
   <!-- geocoder -->
 

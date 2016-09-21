@@ -101,18 +101,41 @@
    vertical-align: top;
  }
  .map-geocoder{
-   width: 20%;
-   height: 10%;
-   align-items: center;
+   height: 400px;
+   border-radius: 16px 16px;
+   border-color: #fff;
+   border-style: solid;
+   box-shadow: 2px 2px 10px #B1B1B1;
+   margin-top: 25px;
+   border-width: 7px;
+   height: 384px;
+   width: 100%;
  }
- .map-geocoder:hover {
--webkit-transform: scale(5.0);
--moz-transform: scale(5.0);
--o-transform: scale(5.0);
-transform: scale(5.0);
--webkit-transform-origin: top left;
--moz-transform-origin: top left;
--o-transform-origin: top left;
-transform-origin: top left;
+//  .map-geocoder:hover {
+// -webkit-transform: scale(5.0);
+// -moz-transform: scale(5.0);
+// -o-transform: scale(5.0);
+// transform: scale(5.0);
+// -webkit-transform-origin: top left;
+// -moz-transform-origin: top left;
+// -o-transform-origin: top left;
+// transform-origin: top left;
+//
+//  }
+#map {
+      height: 100%;
+    }
+    .text_field_tag, .number_field_tag, .search_by_location{
 
- }
+      display: inline-block;
+
+    }
+    .text_field_tag{
+      width: 300px;
+    }
+    .number_field_tag {
+      width: 94px;
+      padding-left: 10px;
+      padding-right: 10px;
+      text-align: center;
+    }
