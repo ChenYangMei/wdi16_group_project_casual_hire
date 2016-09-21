@@ -74,10 +74,11 @@ class JobsController < ApplicationController
       redirect_to jobs_path
     end
 
+    # Created to allow ratings under rating model for a job
     def rate
       @rating = Rating.new(rating_params)
       @rating.user_id = @current_user.id
-
+    # Check to make sure user is not the employee
       if params[:user_id].to_i == @current_user.id
         render :json => { :moron => "You" }
         return
@@ -110,6 +111,7 @@ class JobsController < ApplicationController
     end
 
     private
+    # References for the rating
     def rating_params
       params.require(:rating).permit(:body, :score, :job_id, :user_id)
     end

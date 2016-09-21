@@ -17,13 +17,13 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     # This is the magic stuff that will let us upload an image to Cloudinary when creating a new user.
     # First, check to see if the user has attached an image for uploading
-    if params[:file].present?
+    if params[:image].present?
       # Then call Cloudinary's upload method, passing in the file in params
-      req = Cloudinary::Uploader.upload(params[:file])
+      req = Cloudinary::Uploader.upload(params[:image])
     # Using the public_id allows us to use Cloudinary's powerful image transformation methods.
-    user.image = req["public_id"]
-    user.save
-    redirect_to user_path(user)
+      user.image = req["public_id"]
+      user.save
+      redirect_to user_path(user)
   end
 
     @user = User.new(user_params)
@@ -85,12 +85,12 @@ class UsersController < ApplicationController
       else
         render json: @rating.errors, status: :unprocessable_entity
       end
-  
+
   end
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin, :role, :job_id, :comment_id, :applicant_id, :rating_id)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin, :role, :job_id, :comment_id, :applicant_id, :rating_id, :image)
   end
 
   def rating_params

@@ -1,5 +1,8 @@
 <div class="controls">
-  <% if @current_user.id == @job.user_id %>
+  <!-- Check for current user -->
+  <% if @current_user.present? == false %>
+
+  <% elsif @current_user.id == @job.user_id %>
   <%= link_to "Edit work", edit_job_path( @job.id ) %>
   <%= link_to "Delete work", @job, :method => :delete, :data => { :confirm => "Are you sure?" } %>
 </div>
@@ -42,12 +45,13 @@
 </div>
 
 <!-- Job Completed Button -->
-<div class="button", id="completed">
+<div class="waves-effect waves-light btn", id="completed">
   Job Completed
 </div>
 
 <!-- If the user is looking for a job(employee), show the make an offer button and form -->
-<% if @current_user.employee? %>
+<% if !@current_user %>
+<% elsif @current_user.employee? %>
   <div class="button" id="makeAnOffer">
     Make an Offer
   </div>
@@ -73,14 +77,6 @@
       <!-- geocoder  -->
       <%= image_tag "http://maps.google.com/maps/api/staticmap?size=850x300&sensor=false&zoom=16&markers=#{@job.latitude}%2C#{@job.longitude}",:class => "map-geocoder" %>
 
-      <h3>Nearby Jobs</h3>
-      <ul>
-      <% for job in @job.nearbys(10) %>
-        <li><%= job.task_title%> <%= link_to job.task_location, job %> (<%= job.distance.round(2) %> miles)</li>
-      <% end %>
-      </ul>
-      <!-- geocoder -->
-
       <% if @job.categories.count == 0 %>
         No Categories
         <% else %>Categories: <% @job.categories.each do |b| %>
@@ -95,7 +91,8 @@
   </script>
 
 <!-- If the user is an employer, show people who have applied for the job, and choose an applicant. -->
-<% if @current_user.employer? %>
+<% if !@current_user %>
+<% elsif @current_user.employer? %>
   <div id="applicants">
     <p>
       This job has been applied by <%= @job.applicants.length %> people
@@ -107,28 +104,31 @@
     <% end %>
 
     <!-- Select an applicant only if there're more than 0 applicant-->
-    <% if @job.applicants.length > 0 && @current_user.id === @job.user.id && !@job.completed? %>
-      <div id="select_applicant">
-        <p id="job_id"><%= @job.id %></p>
-        <!-- Sending an update request to job_controller. Using remote:true to include aJax request within this form -->
-        <%= form_for(@job, remote: true, format: :json) do |f| %>
-        <p>
-          <%= f.label :select_an_applicant %>
-          <%= f.collection_select(:applicant_id, @job.applicants, :id, :name) %>
-          <%= f.submit "Submit" %>
-        </p>
-        <% end %>
+    <% if @job.applicants.length > 0 && @current_user.id === @job.user.id %>
+      <% if !@job.completed? %>
+        <div id="select_applicant">
+          <p id="job_id"><%= @job.id %></p>
+          <!-- Sending an update request to job_controller. Using remote:true to include aJax request within this form -->
+          <%= form_for(@job, remote: true, format: :json) do |f| %>
+          <p>
+            <%= f.label :select_an_applicant %>
+            <%= f.collection_select(:applicant_id, @job.applicants, :id, :name) %>
+            <%= f.submit "Submit" %>
+          </p>
+          <% end %>
 
-        <!-- Underscore Template to display data -->
-          <script type="underscore/template" id="applicantDisplayTemplate">
-            <p>This job is taken by <%%= applicant.name %></p>
-          </script>
+          <!-- Underscore Template to display data -->
+            <script type="underscore/template" id="applicantDisplayTemplate">
+              <p>This job is taken by <%%= applicant.name %></p>
+            </script>
 
-      </div>
+        </div>
 
-    <% else %>
+      <% else %>
 
-      <p>This job is taken by <%= @job.applicant.name %></p>
+        <p>This job is taken by <%= @job.applicant.name %></p>
+
+      <% end %>
 
     <% end %>
 
@@ -150,3 +150,11 @@
   </td>
 </tr>
 </table>
+
+<h3>Nearby Jobs</h3>
+  <ul>
+    <% for job in @job.nearbys(10) %>
+      <li><%= link_to job.task_title, job %> <%= job.task_location%> (<%= job.distance.round(2) %> miles)</li>
+    <% end %>
+  </ul>
+<!-- geocoder -->

@@ -1,8 +1,9 @@
 <!-- Including Template to show user_Ratings/review -->
-<div id="rating"> Rate this user
+<div id="rating"> This job is complete - Please rate this user
   <%= form_for @rating, :url => rate_user_path(@job.id) do |f| %>
     <p>
       <%= f.collection_select :user_id, @job.applicants, :user_id, :name %>
+
     </p>
     <p>
       <%= f.label :score %>

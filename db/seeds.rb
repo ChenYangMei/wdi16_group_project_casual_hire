@@ -7,33 +7,42 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.destroy_all
-u1 = User.create :name => "Andrew", :email => "andrew@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 1, :image =>"s42z35fu6lgw8rprmblu"
-u2 = User.create :name => "Arpan", :email => "arpan@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 2
-u3 = User.create :name => "Yangmei", :email => "yangmei@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 1
-u4 = User.create :name => "Badger", :email => "badger@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 2
-u5 = User.create :name => "Wolf", :email => "wolf@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 1
-u6 = User.create :name => "Blade", :email => "blade@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 2
-u7 = User.create :name => "Blade", :email => "blade@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 1
-u8 = User.create :name => "Blade", :email => "blade@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 2
-u9 = User.create :name => "Samit", :email => "samit@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 1
-u10 = User.create :name => "Howie", :email => "howie@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 2
-u11 = User.create :name => "Admin", :email => "admin@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 0
+u1 = User.create :name => "Andrew", :email => "andrew@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 1, :image => "cartoon-man-suit-22793564_igt3xe"
+u2 = User.create :name => "Arpan", :email => "arpan@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 2, :image => "stock-vector-school-boy-cartoon-walking-204036907_kutahp"
+u3 = User.create :name => "Yangmei", :email => "yangmei@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 1, :image => "5TRrxk4kc_lqzvdg"
+u4 = User.create :name => "Badger", :email => "badger@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 2, :image => "xqnyk96erpcyljpf3owe"
+u5 = User.create :name => "Wolf", :email => "wolf@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 1, :image => "cartoon-man-suit-22793564_igt3xe"
+u6 = User.create :name => "Priyanka", :email => "priyanka@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 2, :image => "osqnua1papzimzazyj1p"
+u7 = User.create :name => "Blade", :email => "blade@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 1, :image => "cartoon-man-suit-22793564_igt3xe"
+u8 = User.create :name => "Steve", :email => "steve@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 2, :image => "cartoon-man-suit-22793564_igt3xe"
+u9 = User.create :name => "Samit", :email => "samit@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 1, :image => "cartoon-man-suit-22793564_igt3xe"
+u10 = User.create :name => "Howie", :email => "howie@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 2, :image => "cartoon-man-suit-22793564_igt3xe"
+u11 = User.create :name => "Admin", :email => "admin@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 0, :image => "cartoon-man-suit-22793564_igt3xe"
 
 
 p "Total users :#{User.all.count}"
 
 Job.destroy_all
 
-j1 = Job.create :task_title =>"Handyman", :task_description =>"Change all the taps",     :task_location => "Penrith", :due_date => "2016/09/24", :budget => 45.34
-j2 = Job.create :task_title =>"Home & Garden", :task_description =>"Mow the lawn",     :task_location => "Sydney", :due_date => "2016/09/30", :budget => 90.00
-j3 = Job.create :task_title =>"Laundry", :task_description =>"Wash the clothes",     :task_location => "Sydney", :due_date => "2016/09/29", :budget => 90.00
-j4 = Job.create :task_title =>"Internet", :task_description =>"Set up my internet",     :task_location => "Manly", :due_date => "2016/10/02", :budget => 70.00
-j5 = Job.create :task_title =>"Survey", :task_description =>"Phone up for surveys",     :task_location => "Bondi", :due_date => "2016/10/02", :budget => 50.00
-j6 = Job.create :task_title =>"Bricklaying", :task_description =>"Build my house",     :task_location => "North Sydney", :due_date => "2016/09/24", :budget => 70.00
-j7 = Job.create :task_title =>"Surfin Lesson", :task_description =>"Mow the lawn",     :task_location => "North Manly", :due_date => "2016/09/24", :budget => 70.00
-j8 = Job.create :task_title =>"Cooking", :task_description =>"Babysit",     :task_location => "North Bondi", :due_date => "2016/09/24", :budget => 70.00
-j9 = Job.create :task_title =>"Ironing", :task_description =>"Fix a gutter",     :task_location => "North Maroubra", :due_date => "2016/09/24", :budget => 70.00
-j10 = Job.create :task_title =>"Bricklaying", :task_description =>"Fix a fence",     :task_location => "North Ryde", :due_date => "2016/09/24", :budget => 70.00
+j1 = Job.create :task_title =>"Handyman", :task_description =>"Change all the taps",     :task_location => "Penrith", :due_date => "2016/09/24", :budget => 45.34, :images => ["handyman-1_t7qjoy", "tthq-cong-cu-lao-dong_g9ialm"]
+
+j2 = Job.create :task_title =>"Home & Garden", :task_description =>"Mow the lawn",     :task_location => "Sydney", :due_date => "2016/09/30", :budget => 90.00, :images => ["Home-and-Garden-Show-Garden-1-1024x765_ulh99v", "home-garden-landscape-show-pdf-home-and-garden-an-excellent-home-and-garden_ama38v", "images_mean2x"]
+
+j3 = Job.create :task_title =>"Laundry", :task_description =>"Wash the clothes",     :task_location => "Sydney", :due_date => "2016/09/29", :budget => 90.00, :images => ["laundry_1_vpkq29", "the-best-laundry-guide-to-washing-your-duvets-and-pillowsever-136396012197403901-150206170020_r77lty"]
+
+j4 = Job.create :task_title =>"Internet", :task_description =>"Set up my internet",     :task_location => "Manly", :due_date => "2016/10/02", :budget => 70.00, :images => ["xqnyk96erpcyljpf3owe", "b5u3xbu0bhrxq8cy8mfi"]
+
+j5 = Job.create :task_title =>"Survey", :task_description =>"Phone up for surveys",     :task_location => "Bondi", :due_date => "2016/10/02", :budget => 50.00, :images => ["b5u3xbu0bhrxq8cy8mfi", "xqnyk96erpcyljpf3owe"]
+
+j6 = Job.create :task_title =>"Bricklaying", :task_description =>"Build my house",     :task_location => "North Sydney", :due_date => "2016/09/24", :budget => 70.00, :images => ["d-a-bricklaying-image_os8ofh", "speedy-bricklaying-newport-bricklaying-qualified-bricklayer-b0b9-938x704_crdvfj"], :status => 1
+
+j7 = Job.create :task_title =>"Surfing Lesson", :task_description =>"Mow the lawn",     :task_location => "North Manly", :due_date => "2016/09/24", :budget => 70.00, :images => ["0d76e30461a390d44d7c1710dd7c6161_sg650j", "surfetiquette_kggjms", "surf1_mexa7i"], :status => 2
+
+j8 = Job.create :task_title =>"Cooking", :task_description =>"Babysit",     :task_location => "North Bondi", :due_date => "2016/09/24", :budget => 70.00, :images => ["cooking_ozij4k", "HN_BB_05_EasyCooking_ProRes_739-img_1280x720_cxivl5"], :status => 1
+
+j9 = Job.create :task_title =>"Ironing", :task_description =>"Fix a gutter",     :task_location => "North Maroubra", :due_date => "2016/09/24", :budget => 70.00, :images => ["ironing_forje0", "Iron2_wviir8"], :status => 2
+
+j10 = Job.create :task_title =>"Bricklaying", :task_description =>"Fix a fence",     :task_location => "North Ryde", :due_date => "2016/09/24", :budget => 70.00, :images => ["d-a-bricklaying-image_os8ofh", "speedy-bricklaying-newport-bricklaying-qualified-bricklayer-b0b9-938x704_crdvfj"], :status => 1
 
 Category.destroy_all
 c1 = Category.create :name => "Home & Garden"

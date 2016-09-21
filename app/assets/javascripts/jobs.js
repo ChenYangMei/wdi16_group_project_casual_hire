@@ -35,7 +35,7 @@ $(document).ready(function() {
   };
 
   var changeJobStatus = function(){
-    var jobId = parseInt( $("#job_id").text() )
+    var jobId = parseInt( $("#job_id").text() );
     $.ajax({
       url: "/jobs/" + jobId + "/status_in_progress",
       type: 'PUT',
@@ -64,13 +64,13 @@ $(document).ready(function() {
   // Job completed
 
   var handleAnotherIncrement = function(data){
-    var status = data.status.charAt(0).toUpperCase() + data.status.slice(1)
+    var status = data.status.charAt(0).toUpperCase() + data.status.slice(1);
     $(".status span").text( status );
     $(".status").hide();
   };
 
   var completeJobStatus = function(){
-    var jobId = parseInt( $("#job_id").text() )
+    var jobId = parseInt( $("#job_id").text() );
     $.ajax({
       url: "/jobs/" + jobId + "/status_completed",
       type: 'PUT',
@@ -78,6 +78,6 @@ $(document).ready(function() {
     }).done( handleAnotherIncrement );
   };
 
-  $("#completed").on("click", completeJobStatus)
+  $("#completed").on("click", completeJobStatus);
 
 });
