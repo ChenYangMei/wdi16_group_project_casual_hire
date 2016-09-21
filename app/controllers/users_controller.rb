@@ -85,12 +85,16 @@ class UsersController < ApplicationController
       else
         render json: @rating.errors, status: :unprocessable_entity
       end
-      redirect_to job
+  
   end
 
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin, :role, :job_id, :comment_id, :applicant_id, :rating_id)
+  end
+
+  def rating_params
+    params.require(:rating).permit(:body, :score, :job_id, :user_id)
   end
 
   def authorise

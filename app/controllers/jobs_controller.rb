@@ -76,21 +76,21 @@ class JobsController < ApplicationController
 
     def rate
       @rating = Rating.new(rating_params)
-      @rating.user_id = params[:user_id]
+      @rating.user_id = @current_user.id
 
       if params[:user_id].to_i == @current_user.id
         render :json => { :moron => "You" }
         return
       end
-
-      Job.find_by(:id => params[:rating][:job_id]).ratings << @rating
+      job = Job.find_by(:id => params[:id])
+      job.ratings << @rating
 
         if @rating.save
           render json: @rating
         else
           render json: @rating.errors, status: :unprocessable_entity
         end
-        redirect_to job
+        # redirect_to job
     end
 
     def status_in_progress
@@ -110,6 +110,11 @@ class JobsController < ApplicationController
     end
 
     private
+    def rating_params
+      params.require(:rating).permit(:body, :score, :job_id, :user_id)
+    end
+
+
     def job_params
       params.require(:job).permit(:task_title, :task_description, :task_location, :due_date, :start_time, :workers_required, :budget, :user_id, :applicant_id, :category_id, :rating_id, :category_ids => [])
     end
