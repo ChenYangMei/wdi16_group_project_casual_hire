@@ -64,6 +64,23 @@
       </p>
     <% end %>
   </div>
+      <!-- geocoder  -->
+      <%= image_tag "http://maps.google.com/maps/api/staticmap?size=850x300&sensor=false&zoom=16&markers=#{@job.latitude}%2C#{@job.longitude}",:class => "map-geocoder" %>
+
+      <h3>Nearby Jobs</h3>
+      <ul>
+      <% for job in @job.nearbys(10) %>
+        <li><%= job.task_title%> <%= link_to job.task_location, job %> (<%= job.distance.round(2) %> miles)</li>
+      <% end %>
+      </ul>
+      <!-- geocoder -->
+
+      <% if @job.categories.count == 0 %>
+        No Categories
+        <% else %>Categories: <% @job.categories.each do |b| %>
+          <a class="button" <%= link_to(b.name, category_path(b)) %></a>
+        <% end %><br>
+      <% end %>
 
 
 <!-- underscore Template to display offer data -->
