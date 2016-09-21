@@ -33,28 +33,18 @@
 <!-- Tweet link -->
 <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+
+
 <div class="status">
   <p>
     Status: <%= @job.status_c %>
   </p>
 </div>
 
+<!-- If the user is looking for a job(employee), show the make an offer button and form -->
 <% if @current_user.employee? %>
   <div class="button" id="makeAnOffer">
     Make an Offer
-  </div>
-<% end %>
-
-<% if @current_user.employer? %>
-  <div id="applicants">
-    <p>
-      This job has been applied by <%= @job.applicants.length %> people
-    </p>
-    <% if @job.applicants.length > 0 %>
-      <% @job.applicants.each do |a| %>
-        <p><%= link_to(a.user.name, a.user) %></p>
-      <% end %>
-    <% end %>
   </div>
 <% end %>
 
@@ -75,14 +65,56 @@
     <% end %>
   </div>
 
+
 <!-- underscore Template to display offer data -->
+
+<!-- Underscore Template to display data -->
+
   <script type="underscore/template" id="offerDisplayTemplate">
     <p>Your Quote: <%%= quote %></p>
     <p>Your Description: <%%= description %></p>
   </script>
 
+
 <%= render( :partial => "job_rating" ) %>
 <%= render( :partial => "user_rating" ) %>
+
+  <!-- If the user is an employer, show people who have applied for the job, and choose an applicant. -->
+  <% if @current_user.employer? %>
+    <div id="applicants">
+      <p>
+        This job has been applied by <%= @job.applicants.length %> people
+      </p>
+      <% if @job.applicants.length > 0 %>
+        <% @job.applicants.each do |a| %>
+          <span> <%= link_to(a.user.name, a.user) %> </span>
+        <% end %>
+      <% end %>
+
+      <!-- Select an applicant only if there're more than 0 applicant-->
+      <% if @job.applicants.length > 0 %>
+        <div id="select_applicant">
+
+          <!-- Sending an update request to job_controller. Using remote:true to include aJax request within this form -->
+          <%= form_for(@job, remote: true, format: :json) do |f| %>
+          <p>
+            <%= f.label :select_an_applicant %>
+            <%= f.collection_select(:applicant_id, @job.applicants, :id, :name) %>
+            <%= f.submit "Submit" %>
+          </p>
+          <% end %>
+
+          <!-- Underscore Template to display data -->
+            <script type="underscore/template" id="applicantDisplayTemplate">
+              <p>This job is taken by <%%= applicant.name %></p>
+            </script>
+
+        </div>
+      <% end %>
+
+    </div>
+  <% end %>
+
 
 <table>
 <h5>Comments</h5>

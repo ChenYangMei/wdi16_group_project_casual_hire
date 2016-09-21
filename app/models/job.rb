@@ -41,4 +41,9 @@ class Job < ActiveRecord::Base
     self.status.capitalize
   end
 
+  # Awesome contribution by Badger the Legend! Creating an applicant method which finds the employee(returns an object) who was chosen by the employer to do the job!
+  def applicant
+    User.find(Applicant.find(self.applicant_id).user_id)
+  end
+
 end

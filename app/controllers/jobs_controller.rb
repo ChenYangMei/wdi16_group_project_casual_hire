@@ -9,16 +9,29 @@ class JobsController < ApplicationController
     end
 
     def create
-      # This is the magic stuff that will let us upload an image to Cloudinary when creating a new job.
+
       job = Job.new(job_params)
+
 
       if params[:image] == true
       params[:job][:images].each do |image|
         req = Cloudinary::Uploader.upload(image)
         job.images << req["url"]
       end
+
+      job.category_ids = params[:job][:category_ids]
       job.save
+
+      if params[:image] == true
+        # This is the magic stuff that will let us upload an image to Cloudinary when creating a new job.
+        params[:images].each do |image|
+            req = Cloudinary::Uploader.upload(image)
+            job.images << req["public_id"]
+            job.save
+        end
+
       end
+
       redirect_to job_path(job)
     end
 
@@ -27,10 +40,23 @@ class JobsController < ApplicationController
     end
 
     def update
-      job = Job.find params[:id]
-      job.category_ids = params[:job][:category_ids]
-      job.update job_params
-      redirect_to job
+
+      @job = Job.find params[:id]
+      @job.category_ids = params[:job][:category_ids]
+
+      # respond to different formats here.
+      # get it to return a json object that we can manipulate in our JS and render on the page
+      respond_to do |format|
+        if @job.update(job_params)
+          format.html { redirect_to @job, notice: 'Job was successfully updated.' }
+          # passing the applicant Method created in Job Model into the JSON file, which would nest the selected employee object in job JSON. Go Badger!!!!!!!!!!!!!
+          format.json { render json: @job, methods: :applicant, status: :ok, location: @job }
+        else
+          format.html { render :edit }
+          format.json { render json: @job.errors, status: :unprocessable_entity }
+        end
+      end
+
     end
 
     def show
@@ -43,6 +69,7 @@ class JobsController < ApplicationController
     end
 
     def destroy
+
       job = Job.find params[:id]
       job.destroy
       redirect_to jobs_path
@@ -71,5 +98,26 @@ class JobsController < ApplicationController
     def job_params
       params.require(:job).permit(:task_title, :task_description, :task_location, :due_date, :start_time, :workers_required, :budget, :user_id, :applicant_id, :category_id, :category_ids, :rating_id)
     end
+
+        job = Job.find params[:id]
+        job.destroy
+        redirect_to jobs_path
+    end
+
+    private
+        def job_params
+          params.require(:job).permit(:task_title, :task_description, :task_location, :due_date, :start_time, :workers_required, :budget, :user_id, :applicant_id, :category_id, :rating_id, :category_ids => [])
+        end
+
+
+    # def search
+    #   @user = User.find_by(:name => "Bob")
+    #
+    #   if params[:search_origin] || params[:search_destination]
+    #     @flights = Flight.search(params[:search_origin], params[:search_destination])
+    #   else
+    #     @flights = Flight.all.order("date desc")
+    #   end
+    # end
 
 end

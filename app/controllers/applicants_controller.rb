@@ -13,8 +13,9 @@ class ApplicantsController < ApplicationController
 
   def create
     @applicant = Applicant.new(applicant_params)
-    job = Job.find(params[:job_id])
 
+    # Creating a JSON format for aJax to get and being manipulated in the DOM.
+    job = Job.find(params[:job_id])
     if @applicant.save
       @info = {
         :quote => @applicant.quote,

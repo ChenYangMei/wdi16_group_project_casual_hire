@@ -94,23 +94,29 @@ a4 = Applicant.create :quote => 77.00, :description => "I'm happy to help. I'm a
 a5 = Applicant.create :quote => 44.00, :description => "I'm really awesome", :user_id => u10.id
 a6 = Applicant.create :quote => 34.00, :description => "Piece of cake", :user_id => u2.id
 a7 = Applicant.create :quote => 30.00, :description => "Let me know if you have any further questions", :user_id => u4.id
+a8 = Applicant.create :quote => 70.00, :description => "I'd like to complete this job for you. I'm awesome", :user_id => u2.id
+a9 = Applicant.create :quote => 50.00, :description => "Pick me. I'm awesome", :user_id => u4.id
+a10 = Applicant.create :quote => 60.00, :description => "I got what you need! I'm awesome", :user_id => u6.id
+a11 = Applicant.create :quote => 77.00, :description => "I'm happy to help. I'm awesome", :user_id => u8.id
+a12 = Applicant.create :quote => 44.00, :description => "I'm really awesome", :user_id => u10.id
+a13 = Applicant.create :quote => 34.00, :description => "Piece of cake", :user_id => u2.id
+a14 = Applicant.create :quote => 30.00, :description => "Let me know if you have any further questions", :user_id => u6.id
 
 p "Applicants count: #{Applicant.all.count}"
 
-j1.applicants << a1 << a2 << a3
-j2.applicants << a4 << a5 << a6
-j3.applicants << a5 << a6 << a7
-j4.applicants << a2 << a3 << a4
-j5.applicants << a1 << a7 << a5
-j6.applicants << a3 << a2 << a7
-j7.applicants << a6 << a5 << a6
-j8.applicants << a1 << a4 << a6
-j9.applicants << a1 << a2 << a5
-j10.applicants << a4 << a2 << a3
+j1.applicants << a1 << a2 << a14
+j2.applicants << a3 << a4
+j3.applicants << a5 << a6
+j4.applicants << a7 << a8
+j5.applicants << a9 << a10
+j6.applicants << a11 << a12
+j7.applicants << a13
 
-u3.applicants << a1 << a4 << a7
-u5.applicants << a2 << a5
-u7.applicants << a6 << a3
+u2.applicants << a1 << a5 << a9
+u4.applicants << a2 << a6 << a10
+u6.applicants << a3 << a7 << a11
+u8.applicants << a4 << a8 << a12
+u10.applicants << a13 << a14
 
 Rating.destroy_all
 r1 = Rating.create :body => "I loved working with this person", :score => 4, :user_id => u6.id
