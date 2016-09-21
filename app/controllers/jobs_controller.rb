@@ -90,12 +90,13 @@ class JobsController < ApplicationController
       params.require(:job).permit(:task_title, :task_description, :task_location, :due_date, :start_time, :workers_required, :budget, :user_id, :applicant_id, :category_id, :rating_id, :category_ids => [])
     end
 
-    def increment
+    def status_in_progress
         @job = Job.find params[:id]
         @job.status = 1
         @job.save
 
         render :json => @job
     end
+    
 
 end

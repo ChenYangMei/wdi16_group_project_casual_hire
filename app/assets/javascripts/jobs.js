@@ -31,11 +31,13 @@ $(document).ready(function() {
     $(".status span").text( data.status );
   };
 
+
+
   //Change Job Status
   var changeJobStatus = function(){
     var jobId = parseInt( $("#job_id").text() )
     $.ajax({
-      url: "/jobs/" + jobId + "/increment",
+      url: "/jobs/" + jobId + "/status_in_progress",
       type: 'PUT',
       format: 'JSON',
     }).done( handleUpdateIncrement );
