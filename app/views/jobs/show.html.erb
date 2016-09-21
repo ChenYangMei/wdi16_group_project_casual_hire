@@ -65,9 +65,6 @@
     <% end %>
   </div>
 
-
-<!-- underscore Template to display offer data -->
-
 <!-- Underscore Template to display data -->
 
   <script type="underscore/template" id="offerDisplayTemplate">
@@ -76,9 +73,10 @@
   </script>
 
 
-<%= render( :partial => "job_rating" ) %>
-<%= render( :partial => "user_rating" ) %>
-
+<% if @job.completed?%>
+  <%= render( :partial => "job_rating" ) %>
+  <%= render( :partial => "user_rating" ) %>
+<% end %>
   <!-- If the user is an employer, show people who have applied for the job, and choose an applicant. -->
   <% if @current_user.employer? %>
     <div id="applicants">
