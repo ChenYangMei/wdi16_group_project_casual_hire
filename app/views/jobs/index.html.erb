@@ -1,14 +1,18 @@
 <body>
 
 
-
+<!-- geocoder -->
+  <%= form_tag jobs_path, :method => :get do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= number_field_tag :distance, params[:distance] %>
+      <%= submit_tag "Search Near", :name => nil %>
+    </p>
+  <% end %>
+  <!-- geocoder -->
 
   <div class="recipe-details">
   <% @jobs.each do |a| %>
-  <!-- Take explicit height off card small in your CSS -->
-  <!-- Take width off card small in your css -->
-  <!-- Put your image in a div with display: inline-block -->
-  <!-- Group your h5, br, and all the other stuff you want to appear next to the image in a div with the same class as the div you've wrapped around your image -->
   <div class="card small" id= "cardsmall">
     <!-- Card Content -->
 

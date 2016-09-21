@@ -25,6 +25,10 @@ class Job < ActiveRecord::Base
 
   enum role: [:proposal, :in_progress, :completed]
 
+  # geocoder
+  geocoded_by :task_location
+  after_validation :geocode, :if => :task_location_changed?
+
   def proposal?
     self.status == "proposal"
   end

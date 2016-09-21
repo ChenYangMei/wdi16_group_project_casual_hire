@@ -3,7 +3,7 @@
        <%= link_to "Edit work", edit_job_path( @job.id ) %>
        <%= link_to "Delete work", @job, :method => :delete, :data => { :confirm => "Are you sure?" } %>
       </div>
-      
+
       <p>Job Title: <%= @job.task_title %></p>
 
       <div class="scroller">
@@ -18,6 +18,18 @@
       <p>Time of Job: <%= @job.start_time %></p>
       <p>No. of people Required: <%= @job.workers_required %></p>
       <p>Budget: <%= "$#{@job.budget}" %></p>
+
+      <!-- geocoder  -->
+
+      <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@job.latitude}%2C#{@job.longitude}",:class => "map-geocoder" %>
+
+      <h3>Nearby Jobs</h3>
+      <ul>
+      <% for job in @job.nearbys(10) %>
+        <li><%= job.task_title%> <%= link_to job.task_location, job %> (<%= job.distance.round(2) %> miles)</li>
+      <% end %>
+      </ul>
+      <!-- geocoder -->
 
       <% if @job.categories.count == 0 %>
         No Categories

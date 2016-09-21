@@ -2,6 +2,14 @@ class JobsController < ApplicationController
 
     def index
       @jobs = Job.all
+    #   geocoder
+      if params[:search].present?
+        distance = params[:distance] || 10
+        @jobs = Job.near(params[:search], distance.to_i, :order => :task_location)
+      else
+        @jobs = Job.all
+      end
+    #   ///////
     end
 
     def new
