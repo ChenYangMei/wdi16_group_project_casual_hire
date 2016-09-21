@@ -74,6 +74,7 @@ class JobsController < ApplicationController
       redirect_to jobs_path
     end
 
+    # Created to allow ratings under rating model for a job  
     def rate
       @rating = Rating.new(rating_params)
       @rating.user_id = @current_user.id

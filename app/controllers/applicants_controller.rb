@@ -1,4 +1,5 @@
 class ApplicantsController < ApplicationController
+  before_action :fetch_user, :authorise, :only => [:index, :show]
   def index
     @applicants = Applicant.all
   end
