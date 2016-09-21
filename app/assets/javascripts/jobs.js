@@ -22,7 +22,26 @@ $(document).ready(function() {
     console.log("SOMETHING WENT WRONG");
   };
 
+  // Ajax request posted by rails remote form(job show html.erb page), and handle data from then. See code above.
   $("#new_applicant").on( "ajax:success", handleData )
     .on( "ajax:error", handleError );
+
+
+
+  // After select an applicant and submit, replace the drop down box with the selected information.
+
+  var handleJobApplicant = function(e, data){
+    //take the json object returned by the jobs#update method and manipulate it and make some changes to the DOM.
+    console.log(data);
+    var $applicantDisplayTemplate = $("#applicantDisplayTemplate").html();
+    var dynamicMarkupTemplate = _.template( $applicantDisplayTemplate );
+    var compiledTemplate = dynamicMarkupTemplate( data );
+  
+    $(".edit_job").html(compiledTemplate);
+  };
+
+  $(".edit_job").on( "ajax:success", handleJobApplicant )
+    .on( "ajax:error", handleError );
+
 
 });
