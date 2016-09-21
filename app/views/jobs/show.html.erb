@@ -135,10 +135,17 @@
   </div>
 <% end %>
 
-  <% if @job.completed?%>
-    <%= render( :partial => "job_rating" ) %>
-    <%= render( :partial => "user_rating" ) %>
+<div id = "rating_show">
+  <% if @job.completed? && @current_user.id === @job.user.id %>
+    <p>
+      <%= render( :partial => "user_rating" ) %>
+    </p>
+  <% elsif @job.completed? && @current_user.id === @job.applicant.name %>
+    <p>
+      <%= render( :partial => "job_rating" ) %>
+    </p>
   <% end %>
+</div>
 
 <table>
 <h5>Comments</h5>

@@ -3,26 +3,45 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready(function() {
-  $("#rating").hide();
+  $("#rating_show").hide();
 
-  $("#submitARating").on("click", function(){
-    $("#rating").show();
+  $("#completed").on("click", function(){
+    $("#rating_show").show();
   });
 
-  var handleData = function (e, data) {
-    console.log(data);
-    var $offerDisplayTemplate = $("#ratingDisplayTemplate").html();
-    var dynamicMarkupTemplate = _.template( $offerDisplayTemplate );
-    var compiledTemplate = dynamicMarkupTemplate( data );
-    $("#rating").html(compiledTemplate);
-  };
+  $('#submit_user_rating').on('submit', function(e){
+    e.preventDefault();
+    var details = $('submit_user_rating').serialize();
+    $.post('rate_user_path(@job.id)', details, function(data){
+      $('#submit_user_rating').html(data);
+    });
+  });
 
-  var handleError = function (e, xhr) {
-    console.log(xhr);
-    console.log("SOMETHING WENT WRONG");
-  };
-
-  $("#new_rating").on( "ajax:success", handleData )
-    .on( "ajax:error", handleError );
+  $('#submit_job_rating').on('submit', function(e){
+    e.preventDefault();
+    var details = $('submit_job_rating').serialize();
+    $.post('rate_job_path(@job.id)', details, function(data){
+      $('#submit_job_rating').html(data);
+    });
+  });
 
 });
+
+
+//   var handleData = function (e, data) {
+//     console.log(data);
+//     var $offerDisplayTemplate = $("#ratingDisplayTemplate").html();
+//     var dynamicMarkupTemplate = _.template( $offerDisplayTemplate );
+//     var compiledTemplate = dynamicMarkupTemplate( data );
+//     $("#rating_show").html(compiledTemplate);
+//   };
+//
+//   var handleError = function (e, xhr) {
+//     console.log(xhr);
+//     console.log("SOMETHING WENT WRONG");
+//   };
+//
+//   $("#new_rating").on( "ajax:success", handleData )
+//     .on( "ajax:error", handleError );
+//
+// });

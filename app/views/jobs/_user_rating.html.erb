@@ -1,5 +1,5 @@
 <!-- Including Template to show user_Ratings/review -->
-<div id="rating"> This job is complete - Please rate this user
+<div class="rating"> This job is complete - Please rate this user
   <%= form_for @rating, :url => rate_user_path(@job.id) do |f| %>
     <p>
       <%= f.collection_select :user_id, @job.applicants, :user_id, :name %>
@@ -14,7 +14,7 @@
       <%= f.text_field :body %>
       <% f.hidden_field :user_id %>
     </p>
-    <p id="submit_offer">
+    <p id="submit_user_rating">
       <%= f.submit "Submit" %>
     </p>
   <% end %>
