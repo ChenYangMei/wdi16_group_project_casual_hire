@@ -3,6 +3,7 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready(function() {
+
   $("#job_id").hide();
   $("#offer").hide();
 
@@ -27,13 +28,12 @@ $(document).ready(function() {
   $("#new_applicant").on( "ajax:success", handleData )
     .on( "ajax:error", handleError );
 
+
+  //Change Job Status
   var handleUpdateIncrement = function (data) {
     $(".status span").text( data.status );
   };
 
-
-
-  //Change Job Status
   var changeJobStatus = function(){
     var jobId = parseInt( $("#job_id").text() )
     $.ajax({
@@ -61,6 +61,23 @@ $(document).ready(function() {
     .on( "ajax:error", handleError );
 
 
+  // Job completed
 
+  var handleAnotherIncrement = function(data){
+    var status = data.status.charAt(0).toUpperCase() + data.status.slice(1)
+    $(".status span").text( status );
+    $(".status").hide();
+  };
+
+  var completeJobStatus = function(){
+    var jobId = parseInt( $("#job_id").text() )
+    $.ajax({
+      url: "/jobs/" + jobId + "/status_completed",
+      type: 'PUT',
+      format: 'JSON',
+    }).done( handleAnotherIncrement );
+  };
+
+  $("#completed").on("click", completeJobStatus)
 
 });

@@ -41,6 +41,11 @@
   </p>
 </div>
 
+<!-- Job Completed Button -->
+<div class="button", id="completed">
+  Job Completed
+</div>
+
 <!-- If the user is looking for a job(employee), show the make an offer button and form -->
 <% if @current_user.employee? %>
   <div class="button" id="makeAnOffer">
@@ -64,6 +69,7 @@
       </p>
     <% end %>
   </div>
+
       <!-- geocoder  -->
       <%= image_tag "http://maps.google.com/maps/api/staticmap?size=850x300&sensor=false&zoom=16&markers=#{@job.latitude}%2C#{@job.longitude}",:class => "map-geocoder" %>
 
@@ -101,7 +107,7 @@
     <% end %>
 
     <!-- Select an applicant only if there're more than 0 applicant-->
-    <% if @job.applicants.length > 0 && @current_user.id === @job.user.id %>
+    <% if @job.applicants.length > 0 && @current_user.id === @job.user.id && !@job.completed? %>
       <div id="select_applicant">
         <p id="job_id"><%= @job.id %></p>
         <!-- Sending an update request to job_controller. Using remote:true to include aJax request within this form -->
@@ -119,6 +125,11 @@
           </script>
 
       </div>
+
+    <% else %>
+
+      <p>This job is taken by <%= @job.applicant.name %></p>
+
     <% end %>
 
   </div>

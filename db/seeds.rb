@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.destroy_all
-u1 = User.create :name => "Andrew", :email => "andrew@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 0, :image =>"s42z35fu6lgw8rprmblu"
+u1 = User.create :name => "Andrew", :email => "andrew@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 1, :image =>"s42z35fu6lgw8rprmblu"
 u2 = User.create :name => "Arpan", :email => "arpan@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 2
 u3 = User.create :name => "Yangmei", :email => "yangmei@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 1
 u4 = User.create :name => "Badger", :email => "badger@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 2
@@ -17,6 +17,8 @@ u7 = User.create :name => "Blade", :email => "blade@ga.co", :password => "chicke
 u8 = User.create :name => "Blade", :email => "blade@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 2
 u9 = User.create :name => "Samit", :email => "samit@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 1
 u10 = User.create :name => "Howie", :email => "howie@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 2
+u11 = User.create :name => "Admin", :email => "admin@ga.co", :password => "chicken", :password_confirmation => "chicken", :role => 0
+
 
 p "Total users :#{User.all.count}"
 
