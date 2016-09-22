@@ -1,13 +1,13 @@
 class JobsController < ApplicationController
 
     def index
-      @jobs = Job.all
+      @jobs = Job.all.order("created_at DESC")
     #   geocoder
       if params[:search].present?
         distance = params[:distance] || 10
         @jobs = Job.near(params[:search], distance.to_i, :order => :task_location)
       else
-        @jobs = Job.all
+        @jobs = Job.all.order("created_at DESC")
       end
     #   ///////
     end

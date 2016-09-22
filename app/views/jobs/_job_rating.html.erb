@@ -3,7 +3,7 @@
 </div>
 <!-- Including Template to show job_Ratings/review -->
   <div class="rating">This job is complete - Please rate this user
-    <%= form_for @rating, :url => rate_job_path(@job.id) do |f| %>
+    <%= form_for @rating, :url => rate_job_path(@job.id), :remote => true, :format => :json do |f| %>
 
       <p>
         <!-- <%#= f.collection_select :user_id, @job, :user_id, :name %> -->

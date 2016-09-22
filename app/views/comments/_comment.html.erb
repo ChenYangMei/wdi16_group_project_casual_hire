@@ -4,6 +4,7 @@
     <p class="user">Post by: <%= link_to comment.user.name, "/users/#{comment.user.id}" %> <%= cl_image_tag(comment.user.image) %>
     </p>
 
+    <p>Rating: <%= comment.user.ratings.average(:score) %></p>
     <p><%= comment.body %> </p>
     <p>Created:
       <%= time_ago_in_words(comment.created_at) %> ago.

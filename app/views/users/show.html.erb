@@ -26,8 +26,29 @@
 
 <h5>Ratings for <%= @user.name %></h5>
       <ul>
-        <% @user.ratings.each do |a| %>
+        <% if @user.role_c == "Employee" %>
+          <li>Number of ratings: <%= @user.ratings.count %></li>
+        <% if @user.ratings.count > 0 %>
+          <li>Average rating: <%= @user.ratings.average(:score).round(2) %> </li>
+        <% end %>
+          <% @user.ratings.each do |a| %>
             <li>Score: <%= a.score %></li>
             <li>Review: <%= a.body %></li>
+          <% end %>
+        <% end %>
+
+        <% if @user.role_c == "Employer" %>
+          <!-- <li>Number of ratings: <%#= @user.jobs.ratings.count %></li>
+
+        <%# if @user.jobs.ratings.count > 0 %>
+          <li>Average rating: <%#= @user.jobs.ratings.average(:score).round(2) %> </li>
+        <%# end %> -->
+
+          <% @user.jobs.each do |j| %>
+            <% j.ratings.each do |k| %>
+              <li>Score: <%= k.score %></li>
+              <li>Review: <%= k.body %></li>
+            <% end %>
+          <% end %>
         <% end %>
       </ul>

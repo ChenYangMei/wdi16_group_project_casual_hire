@@ -17,7 +17,7 @@ class RatingsController < ApplicationController
 
   def create
     @rateable = find_rateable
-    # @rating = @rateable.ratings.build(rating_params) - updated below 
+    # @rating = @rateable.ratings.build(rating_params) - updated below
     # @rating = Rating.create( rating_params )
     # redirect_to @rating
     job = Job.find(params[:job_id])
@@ -25,7 +25,7 @@ class RatingsController < ApplicationController
 
       if @rating.save
         @info = {
-          :quote => @rating.score,
+          :score => @rating.score,
           :description => @rating.body,
           :user_id => @current_user.id,
           :job_id => job.id
