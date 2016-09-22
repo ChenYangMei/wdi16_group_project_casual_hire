@@ -34,9 +34,9 @@
       </div>
 
       <p><%= link_to( a.task_title, "/jobs/#{a.id}" ) %></p>
-
       <p>Location: <%= a.task_location %></p>
       <p>Budget: <%= "$#{a.budget}" %></p>
+
 
     <% if a.categories.count == 0 %>
       No categories

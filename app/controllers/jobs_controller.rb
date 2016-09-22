@@ -21,18 +21,15 @@ class JobsController < ApplicationController
       job = Job.new(job_params)
       job.user_id = @current_user.id
       job.category_ids = params[:job][:category_ids]
-      job.save
 
-      if params[:image] == true
-        # This is the magic stuff that will let us upload an image to Cloudinary when creating a new job.
-        params[:images].each do |image|
-            req = Cloudinary::Uploader.upload(image)
-            job.images << req["public_id"]
+      if params[:job][:images].present?
+          params[:job][:images].each do |photo|
+            req = Cloudinary::Uploader.upload(photo)
+            job.images << req['public_id']
             job.save
-        end
-
+          end
       end
-
+      job.save
       redirect_to job_path(job)
     end
 
