@@ -10,56 +10,57 @@
 <body>
   <div class="wrapper">
 
-  <nav>
-    <div class="nav-wrapper #3f51b5 indigo">
-      <a href="#" class="brand-logo" id="logo">Casual Hire</a>
-      <ul class="right hide-on-med-and-down">
-        <li><%= link_to("All Jobs", jobs_path) %></li>
-        <li><%= link_to("Categories", categories_path) %></li>
+    <nav>
+      <div class="nav-wrapper #3f51b5 indigo">
+        <a href="/jobs" class="brand-logo" id="logo">Casual Hire</a>
+        <ul class="right hide-on-med-and-down">
+          <li><%= link_to("All Jobs", jobs_path) %></li>
+          <li><%= link_to("Categories", categories_path) %></li>
 
-        <% unless @current_user.present? %>
-          <li><%= link_to("Sign Up", new_user_path) %></li>
-          <li><%= link_to("Log In", login_path()) %></li>
-        <% else %>
-          <% if @current_user.admin? %>
-            <li><%= link_to("All Users", users_path) %></li>
+          <% unless @current_user.present? %>
+            <li><%= link_to("Sign Up", new_user_path) %></li>
+            <li><%= link_to("Log In", login_path()) %></li>
+          <% else %>
+            <% if @current_user.admin? %>
+              <li><%= link_to("All Users", users_path) %></li>
+            <% end %>
+
+            <% if @current_user.employer? %>
+              <li><%= link_to("Create a Job", new_job_path) %></li>
+            <% end %>
+
+
+            <li>You're logged in as <%= @current_user.role_c %></li>
+            <li><%= link_to(@current_user.name, @current_user) %></li>
+            <li id="navInfo"><%= link_to("Log Out", logout_path(), :method => :delete )  %></li>
           <% end %>
+        </ul>
+      </div>
 
-          <% if @current_user.employer? %>
-            <li><%= link_to("Create a Job", new_job_path) %></li>
-          <% end %>
+    </nav>
 
+    <% if flash[:success] %>
+      <p class="flash">
+        <%= flash[:success] %>
+      </p>
+    <% end %>
 
-          <li>You're logged in as <%= @current_user.role_c %></li>
-          <li><%= link_to(@current_user.name, @current_user) %></li>
-          <li id="navInfo"><%= link_to("Log Out", logout_path(), :method => :delete )  %></li>
-        <% end %>
-      </ul>
+    <% if flash[:error] %>
+      <p class="flash">
+        <%= flash[:error] %>
+      </p>
+    <% end %>
+
+    <div class="container">
+      <%= yield %>
     </div>
 
-  </nav>
-
-  <% if flash[:success] %>
-    <p class="flash">
-      <%= flash[:success] %>
-    </p>
-  <% end %>
-
-  <% if flash[:error] %>
-    <p class="flash">
-      <%= flash[:error] %>
-    </p>
-  <% end %>
-
-  <div class="container">
-    <%= yield %>
+    <footer class="footer-copyright grey-text text-lighten-4 #3f51b5 indigo center">
+      <p>
+        Group project by Andrew, Arpan and Yangmei   © 2016 Copyright
+      </p>
+    </footer>
   </div>
-
-  <footer class="footer-copyright grey-text text-lighten-4 #3f51b5 indigo center">
-    <p>
-      Group project by Andrew, Arpan and Yangmei   © 2016 Copyright
-    </p>
-  </footer>
-</div>
 </body>
+
 </html>

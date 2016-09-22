@@ -17,7 +17,7 @@
 
 <div class="scroller">
   <% @job.images.each do |image| %>
-    <%= cl_image_tag(image, :gravity=>"face", :crop => "fill", :width => 400, :height => 400) %>
+    <%= cl_image_tag(image, :crop => "fill", :width => 400, :height => 300) %>
   <% end %>
 </div>
 
@@ -173,12 +173,17 @@
 
 
 <!-- geocoder  -->
-<%= image_tag "http://maps.google.com/maps/api/staticmap?size=850x300&sensor=false&zoom=16&markers=#{@job.latitude}%2C#{@job.longitude}",:class => "map-geocoder" %>
-
-<h3>Nearby Jobs</h3>
-  <ul>
-    <% for job in @job.nearbys(10) %>
-      <li><%= link_to job.task_title, job %> <%= job.task_location%> (<%= job.distance.round(2) %> miles)</li>
-    <% end %>
-  </ul>
+<div class="row">
+  <div class="col s6">
+    <%= image_tag "http://maps.google.com/maps/api/staticmap?size=850x300&sensor=false&zoom=16&markers=#{@job.latitude}%2C#{@job.longitude}",:class => "map-geocoder" %>
+  </div>
+  <div class="col s6">
+    <h3>Nearby Jobs</h3>
+    <ul>
+      <% for job in @job.nearbys(10) %>
+        <li><%= link_to job.task_title, job %> <%= job.task_location%> (<%= job.distance.round(2) %> miles)</li>
+      <% end %>
+    </ul>
+  </div>
+</div>
 <!-- geocoder -->
