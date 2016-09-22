@@ -19,6 +19,7 @@ class JobsController < ApplicationController
     def create
 
       job = Job.new(job_params)
+      job.user_id = @current_user.id
       job.category_ids = params[:job][:category_ids]
       job.save
 

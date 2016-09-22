@@ -12,6 +12,9 @@
 class Category < ActiveRecord::Base
   has_and_belongs_to_many :jobs
 
+  def slug
+    self.name.downcase.gsub( /\W/, "" )
+  end
 
   def get_sorted_jobs
       self.jobs.sort_by do |j|
