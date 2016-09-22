@@ -48,7 +48,7 @@
       <% end %><br>
     <% end %>
 
-    <br><br>
+    <br>
 
     <!-- Tweet link -->
     <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -71,7 +71,7 @@
     <!-- If the user is looking for a job(employee), show the make an offer button and form -->
     <% if !@current_user %>
     <% elsif @current_user.employee? %>
-      <div class="button" id="makeAnOffer">
+      <div class="waves-effect waves-light btn" id="makeAnOffer">
         Make an Offer
       </div>
     <% end %>
@@ -81,7 +81,7 @@
       <%= form_for([@job, @applicant], remote: true) do |f| %>
         <p>
           <%= f.label :quote %>
-          <%= f.text_field :quote, :required => true %>
+          <%= f.number_field :quote, :required => true %>
         </p>
         <p>
           <%= f.label :description %>

@@ -1,5 +1,5 @@
 class ApplicantsController < ApplicationController
-  before_action :fetch_user, :authorise, :only => [:index, :show]
+  before_action :fetch_user, :authorise, :only => [:index, :show, :create]
   def index
     @applicants = Applicant.all
   end
@@ -17,6 +17,7 @@ class ApplicantsController < ApplicationController
 
     # Creating a JSON format for aJax to get and being manipulated in the DOM.
     job = Job.find(params[:job_id])
+
     if @applicant.save
       @info = {
         :quote => @applicant.quote,
