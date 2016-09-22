@@ -29,6 +29,13 @@ class Job < ActiveRecord::Base
   geocoded_by :task_location
   after_validation :geocode, :if => :task_location_changed?
 
+  def slugs
+    slugs_arr = self.categories.map do |c|
+      c.slug
+    end
+    slugs_arr.join(" ")
+  end
+
   def proposal?
     self.status == "proposal"
   end

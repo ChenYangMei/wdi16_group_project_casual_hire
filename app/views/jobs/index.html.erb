@@ -1,4 +1,10 @@
-<div id="buttons"></div>
+<div id="buttons">
+  <button class="all">Show All</button>
+  <% Category.all.each do |category| %>
+    <button class="<%= category.slug %>"><%= category.name %></button>
+  <% end %>
+
+</div>
 
 <body>
 
@@ -18,9 +24,9 @@
   <!-- geocoder -->
 
 
-<div>
+<div class="cards">
   <% @jobs.each do |a| %>
-    <div class="card small" id= "cardsmall">
+    <div class="card small <%= a.slugs %>" id= "cardsmall">
 
       <div class="user">
         <%= cl_image_tag(a.user.image) %>
