@@ -67,7 +67,7 @@ $(document).ready(function() {
 
   $("#job_id").hide();
   $("#offer").hide();
-  $("#rating_show").hide();
+  // $("#rating_show").hide();
 
   $("#makeAnOffer").on("click", function(){
     $("#offer").fadeIn(3000);
