@@ -34,7 +34,8 @@
 
       </div>
 
-      <p><%= link_to( a.task_title, "/jobs/#{a.id}" ) %></p>
+      <p><%= link_to( a.task_title, "/jobs/#{a.id}" ) %> | Status: <span><%= a.status_c %></span></p>
+      <p>Applied by <%= pluralize(a.applicants.length, "person") %></p>
       <p>Location: <%= a.task_location %></p>
       <p>Budget: <%= "$#{a.budget}" %></p>
 

@@ -83,6 +83,7 @@ class JobsController < ApplicationController
 
     # Created to allow ratings under rating model for a job
     def rate
+    
       @rating = Rating.new(rating_params)
       @rating.user_id = @current_user.id
     # Check to make sure user is not the employee

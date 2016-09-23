@@ -67,9 +67,10 @@ $(document).ready(function() {
 
   $("#job_id").hide();
   $("#offer").hide();
+  $("#rating_show").hide();
 
   $("#makeAnOffer").on("click", function(){
-    $("#offer").show();
+    $("#offer").fadeIn(3000);
   });
 
   var handleData = function (e, data) {
@@ -78,13 +79,14 @@ $(document).ready(function() {
     var dynamicMarkupTemplate = _.template( $offerDisplayTemplate );
     var compiledTemplate = dynamicMarkupTemplate( data );
     $("#offer").html(compiledTemplate);
+    $("#makeAnOffer").fadeOut(3000);
   };
 
   var handleError = function (e, xhr) {
-    console.log(xhr);
-    console.log("SOMETHING WENT WRONG");
+    $("#offer").text("Something went wrong!")
   };
 
+  // Make an Offer
   // Ajax request posted by rails remote form(job show html.erb page), and handle data from then. See code above.
   $("#new_applicant").on( "ajax:success", handleData )
     .on( "ajax:error", handleError );
@@ -92,7 +94,7 @@ $(document).ready(function() {
 
   //Change Job Status
   var handleUpdateIncrement = function (data) {
-    $(".status span").text( data.status );
+    $(".status span").text( data.status ).fadeIn(3000);
   };
 
   var changeJobStatus = function(){
@@ -104,6 +106,7 @@ $(document).ready(function() {
     }).done( handleUpdateIncrement );
   };
 
+  // Show applicant
   // After select an applicant and submit, replace the drop down box with the selected information.
 
   var handleJobApplicant = function(e, data){
@@ -125,9 +128,12 @@ $(document).ready(function() {
   // Job completed
 
   var handleAnotherIncrement = function(data){
+    // Bring out the rating form
+    $("#rating_show").show();
     var status = data.status.charAt(0).toUpperCase() + data.status.slice(1);
     $(".status span").text( status );
-    $(".status").hide();
+    $("#completed").hide();
+
   };
 
   var completeJobStatus = function(){

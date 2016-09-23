@@ -9,6 +9,14 @@ $(document).ready(function() {
     $("#rating_show").show();
   });
 
+  var handleData = function(e, data){
+    console.log(data);
+  };
+
+  var handleError = function (e, xhr) {
+    $("#offer").text("Something went wrong!")
+  };
+
   // $('#submit_user_rating').on('submit', function(e){
   //   e.preventDefault();
   //   var details = $('submit_user_rating').serialize();
@@ -25,6 +33,9 @@ $(document).ready(function() {
   //   });
   // });
 
+
+  $("#new_rating").on( "ajax:success", handleData )
+    .on( "ajax:error", handleError );
 });
 
 
