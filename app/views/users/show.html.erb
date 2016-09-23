@@ -26,8 +26,16 @@
 
 <h5>Ratings for <%= @user.name %></h5>
       <ul>
-        <% @user.ratings.each do |a| %>
-            <li>Score: <%= a.score %></li>
-            <li>Review: <%= a.body %></li>
+        <% @user.ratings.each do |r| %>
+            <li>Score: <%= r.score %></li>
+            <li>Review: <%= r.body %></li>
+        <% end %>
+      </ul>
+
+<h5>Ratings for <%= @user.name %></h5>
+      <ul>
+        <% @user.jobs.each do |j| %>
+            <li>Score: <%= j.ratings.first.score %></li>
+            <li>Review: <%= j.ratings.first.body %></li>
         <% end %>
       </ul>

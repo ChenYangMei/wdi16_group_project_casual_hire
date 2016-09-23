@@ -57,6 +57,9 @@ end
   end
 
   def rate
+    job = Job.find params[:job_id]
+    user_id = job.applicant.id
+
     @rating = Rating.new(rating_params)
     @rating.job_id = params[:job_id]
 
@@ -65,7 +68,9 @@ end
       return
     end
 
-    User.find_by(:id => params[:rating][:user_id]).ratings << @rating
+    # binding.pry
+
+    User.find_by(:id => user_id).ratings << @rating
 
       if @rating.save
         render json: @rating

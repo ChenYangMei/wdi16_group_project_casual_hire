@@ -16,26 +16,26 @@ class RatingsController < ApplicationController
   end
 
   def create
+
     @rateable = find_rateable
-    # @rating = @rateable.ratings.build(rating_params) - updated below 
+    # @rating = @rateable.ratings.build(rating_params) - updated below
     # @rating = Rating.create( rating_params )
     # redirect_to @rating
     job = Job.find(params[:job_id])
     @rating = Rating.new(rating_params)
 
-      if @rating.save
-        @info = {
-          :quote => @rating.score,
-          :description => @rating.body,
-          :user_id => @current_user.id,
-          :job_id => job.id
-        }
-        render json: @info
-      else
-        render json: @rating.errors, status: :unprocessable_entity
-      end
-
+    if @rating.save
+      @info = {
+        :score => @rating.score,
+        :body => @rating.body,
+        :user_id => @current_user.id,
+        :job_id => job.id
+      }
+      render json: @info
+    else
+      render json: @rating.errors, status: :unprocessable_entity
     end
+
   end
 
   def edit
@@ -66,3 +66,4 @@ private
       end
     end
   end
+end

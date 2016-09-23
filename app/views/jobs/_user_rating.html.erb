@@ -1,16 +1,15 @@
-<!-- Including Template to show user_Ratings/review -->
-<div class="rating"> This job is complete - Please rate this user
-  <%= form_for @rating, :url => rate_user_path(@job.id) do |f| %>
-    <p>
-      <%= f.collection_select :user_id, @job.applicants, :user_id, :name %>
+<!-- This is to rate the employee!!!! -->
 
-    </p>
+<!-- Including Template to show user_Ratings/review -->
+<div class="rating">
+  <h6>Did <%= link_to(@job.applicant.name, user_path(@job.applicant.id)) %> do a good job?</h6>
+  <%= form_for(@rating, :url => rate_user_path(@job.id), remote: true, format: :json) do |f| %>
     <p>
       <%= f.label :score %>
       <%= f.number_field :score, :min => 1, :max => 5, :required => true %>
     </p>
     <p>
-      <%= f.label :body %>
+      <%= f.label :description %>
       <%= f.text_field :body %>
       <% f.hidden_field :user_id %>
     </p>

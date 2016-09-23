@@ -9,22 +9,16 @@ $(document).ready(function() {
     $("#rating_show").show();
   });
 
-  $('#submit_user_rating').on('submit', function(e){
-    e.preventDefault();
-    var details = $('submit_user_rating').serialize();
-    $.post('rate_user_path(@job.id)', details, function(data){
-      $('#submit_user_rating').html(data);
-    });
-  });
+  var handleData = function(e, data){
+    console.log(data);
+  };
 
-  $('#submit_job_rating').on('submit', function(e){
-    e.preventDefault();
-    var details = $('submit_job_rating').serialize();
-    $.post('rate_job_path(@job.id)', details, function(data){
-      $('#submit_job_rating').html(data);
-    });
-  });
+  var handleError = function (e, xhr) {
+    $("#offer").text("Something went wrong!")
+  };
 
+  $("#new_rating").on( "ajax:success", handleData )
+    .on( "ajax:error", handleError );
 });
 
 

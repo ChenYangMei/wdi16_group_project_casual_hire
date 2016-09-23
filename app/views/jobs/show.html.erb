@@ -32,7 +32,9 @@
 
     <% if @job.categories.count == 0 %>
       No Categories
-      <% else %>Categories: <% @job.categories.each do |b| %>
+    <% else %>
+      Categories:
+      <% @job.categories.each do |b| %>
         <a class="button" <%= link_to(b.name, category_path(b)) %></a>
       <% end %><br>
     <% end %>
@@ -43,7 +45,8 @@
 
     <% if @job.categories.count == 0 %>
       No Categories
-      <% else %>Categories: <% @job.categories.each do |b| %>
+    <% else %>Categories:
+      <% @job.categories.each do |b| %>
         <a class="button" <%= link_to(b.name, category_path(b)) %></a>
       <% end %><br>
     <% end %>
@@ -64,9 +67,11 @@
     </div>
 
     <!-- Job Completed Button -->
-    <div class="waves-effect waves-light btn" id="completed">
-      Job Completed
-    </div>
+    <% if @current_user.id == @job.user.id %>
+      <div class="waves-effect waves-light btn" id="completed">
+        Job Completed
+      </div>
+    <% end %>
 
     <!-- If the user is looking for a job(employee), show the make an offer button and form -->
     <% if !@current_user %>
@@ -100,20 +105,22 @@
       </script>
 
     <!-- If the user is an employer, show people who have applied for the job, and choose an applicant. -->
-    <% if !@current_user %>
-    <% elsif @current_user.employer? %>
+    <% if @current_user.employer? %>
       <div id="applicants">
-        <p>
-          This job has been applied by <%= @job.applicants.length %> people
-        </p>
-        <% if @job.applicants.length > 0 %>
-          <% @job.applicants.each do |a| %>
-            <span> <%= link_to(a.user.name, a.user) %> </span>
+
+        <div class="show_applicants">
+          <p>
+            This job has been applied by <%= @job.applicants.length %> people
+          </p>
+          <% if @job.applicants.length > 0 %>
+            <% @job.applicants.each do |a| %>
+              <span> <%= link_to(a.user.name, a.user) %> </span>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
 
         <!-- Select an applicant only if there're more than 0 applicant-->
-        <% if @job.applicants.length > 0 && @current_user.id === @job.user.id %>
+        <% if @job.applicants.length > 0 && @current_user.id == @job.user.id %>
           <% if !@job.completed? %>
             <div id="select_applicant">
               <p id="job_id"><%= @job.id %></p>
@@ -128,7 +135,7 @@
 
               <!-- Underscore Template to display data -->
                 <script type="underscore/template" id="applicantDisplayTemplate">
-                  <p>This job is taken by <%%= applicant.name %></p>
+                  <h5>This job is taken by <%%= applicant.name %></h5>
                 </script>
             </div>
 
@@ -143,8 +150,27 @@
   </div>
 </main>
 
+
+<!-- rating -->
+<div id = "rating_show">
+  <%# if @job.completed? && @current_user.id === @job.user.id %>
+    <p>
+      <%= render( :partial => "user_rating" ) %>
+    </p>
+  <%# end %>
+</div>
+
+<div id = "rating_job_show">
+  <%# if @job.completed? && @current_user.id === @job.applicant.id %>
+    <p>
+      <%= render( :partial => "job_rating" ) %>
+    </p>
+  <%# end %>
+</div>
+
 <hr>
 
+<!-- Comments -->
 <div class="comments">
   <table>
   <h5>Comments</h5>
@@ -156,19 +182,6 @@
     </td>
   </tr>
   </table>
-</div>
-
-
-<div id = "rating_show">
-  <% if @job.completed? && @current_user.id === @job.user.id %>
-    <p>
-      <%= render( :partial => "user_rating" ) %>
-    </p>
-  <% elsif @job.completed? && @current_user.id === @job.applicant.name %>
-    <p>
-      <%= render( :partial => "job_rating" ) %>
-    </p>
-  <% end %>
 </div>
 
 

@@ -13,19 +13,22 @@ class ApplicantsController < ApplicationController
   end
 
   def create
+
     @applicant = Applicant.new(applicant_params)
+    @applicant.job_id = params[:job_id]
+    @applicant.user_id = @current_user.id
 
     # Creating a JSON format for aJax to get and being manipulated in the DOM.
     job = Job.find(params[:job_id])
 
     if @applicant.save
-      @info = {
-        :quote => @applicant.quote,
-        :description => @applicant.description,
-        :user_id => @current_user.id,
-        :job_id => job.id
-      }
-      render json: @info
+      # @info = {
+      #   :quote => @applicant.quote,
+      #   :description => @applicant.description,
+      #   :user_id => @current_user.id,
+      #   :job_id => job.id
+      # }
+      render json: @applicant
     else
       render json: @applicant.errors, status: :unprocessable_entity
     end
