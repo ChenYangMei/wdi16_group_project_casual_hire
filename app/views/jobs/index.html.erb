@@ -31,6 +31,7 @@
       <div class="user">
         <%= cl_image_tag(a.user.image) %>
         <p>Posted by: <%= link_to(a.user.name, user_path(a.user)) %></p>
+        <p>Rating: <%= a.user.ratings.average(:score) %></p>
       </div>
 
       <p><%= link_to( a.task_title, "/jobs/#{a.id}" ) %> | Status: <span><%= a.status_c %></span></p>

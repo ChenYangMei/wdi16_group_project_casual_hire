@@ -3,10 +3,15 @@
 </div>
 <!-- This is to rate the employer - job owner!!! -->
 <!-- Including Template to show job_Ratings/review -->
+<<<<<<< HEAD
   <div class="rating">
     <p>This job is complete - Please rate <%= link_to(@job.user.name, user_path(@job.user)) %></p>
 
     <%= form_for(@rating, :url => rate_job_path(@job.id), remote: true, format: :json) do |f| %>
+=======
+  <div class="rating">This job is complete - Please rate this user
+    <%= form_for @rating, :url => rate_job_path(@job.id), :remote => true, :format => :json do |f| %>
+>>>>>>> f0c94a70ed6954ee457f8fafbecf3e48872fbe1c
 
       <p>
         <%= f.label :score %>

@@ -1,3 +1,4 @@
+
 var $card;
 $(document).ready(function() {
   $("#buttons button").on("click", function () {
@@ -16,5 +17,6 @@ $(document).ready(function() {
     itemSelector: '.card',
     layoutMode: 'fitRows'
   });
-
+  $(".latitude").hide();
+  $(".longitude").hide();
 });

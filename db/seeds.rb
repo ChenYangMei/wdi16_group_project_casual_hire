@@ -44,6 +44,18 @@ j9 = Job.create :task_title =>"Ironing", :task_description =>"Fix a gutter",    
 
 j10 = Job.create :task_title =>"Bricklaying", :task_description =>"Fix a fence",     :task_location => "North Ryde", :due_date => "2016/09/24", :budget => 70.00, :images => ["d-a-bricklaying-image_os8ofh", "speedy-bricklaying-newport-bricklaying-qualified-bricklayer-b0b9-938x704_crdvfj"]
 
+j11 = Job.create :task_title =>"Bricklaying", :task_description =>"Fix a fence",     :task_location => "North Curl Curl", :due_date => "2016/09/24", :budget => 50.00, :images => ["d-a-bricklaying-image_os8ofh", "speedy-bricklaying-newport-bricklaying-qualified-bricklayer-b0b9-938x704_crdvfj"]
+
+j12 = Job.create :task_title =>"Painting", :task_description =>"Fix a fence",     :task_location => "Neutral Bay", :due_date => "2016/09/24", :budget => 50.00, :images => ["d-a-bricklaying-image_os8ofh", "speedy-bricklaying-newport-bricklaying-qualified-bricklayer-b0b9-938x704_crdvfj"]
+
+j13 = Job.create :task_title =>"Signage", :task_description =>"Fix a fence",     :task_location => "Mosman", :due_date => "2016/09/24", :budget => 150.00, :images => ["d-a-bricklaying-image_os8ofh", "speedy-bricklaying-newport-bricklaying-qualified-bricklayer-b0b9-938x704_crdvfj"]
+
+j14 = Job.create :task_title =>"Fruit picking", :task_description =>"Pick fruit",     :task_location => "North Curl Curl", :due_date => "2016/09/24", :budget => 50.00, :images => ["d-a-bricklaying-image_os8ofh", "speedy-bricklaying-newport-bricklaying-qualified-bricklayer-b0b9-938x704_crdvfj"]
+
+j15 = Job.create :task_title =>"Survey", :task_description =>"Crunch some data",     :task_location => "North Curl Curl", :due_date => "2016/09/24", :budget => 50.00, :images => ["d-a-bricklaying-image_os8ofh", "speedy-bricklaying-newport-bricklaying-qualified-bricklayer-b0b9-938x704_crdvfj"]
+
+j16 = Job.create :task_title =>"Fruit picking", :task_description =>"Fix a fence",     :task_location => "North Curl Curl", :due_date => "2016/09/24", :budget => 50.00, :images => ["d-a-bricklaying-image_os8ofh", "speedy-bricklaying-newport-bricklaying-qualified-bricklayer-b0b9-938x704_crdvfj"]
+
 Category.destroy_all
 c1 = Category.create :name => "Home & Garden"
 c2 = Category.create :name => "Computer & IT"
@@ -60,22 +72,25 @@ c11 = Category.create :name => "Other"
 p "Category count: #{Category.all.count}"
 
 p "Total Jobs posted : #{Job.all.count}"
-u1.jobs << j1 << j6
-u3.jobs << j2 << j7
-u5.jobs << j3 << j8
-u7.jobs << j4 << j9
-u9.jobs << j5 << j10
+u1.jobs << j1 << j6 << j16 << j14
+u3.jobs << j2 << j7 << j15
+u5.jobs << j3 << j8 << j11
+u7.jobs << j4 << j9 << j12
+u9.jobs << j5 << j10 << j13
+
 
 
 c1.jobs << j1 <<j3 <<j5
-c2.jobs << j2 <<j4 <<j6
-c3.jobs << j1 <<j3 <<j5
+c2.jobs << j2 <<j4 <<j6 <<j15
+c3.jobs << j1 <<j3 <<j5 <<j16
 c4.jobs << j1 <<j3 <<j5
 c5.jobs << j1 <<j3 <<j5
-c6.jobs << j4 <<j5 <<j6
+c6.jobs << j4 <<j5 <<j6 <<j16
 c7.jobs << j7 <<j8 <<j9
 c8.jobs << j10 <<j6 <<j9
 c9.jobs << j7 <<j8 <<j9
+c10.jobs << j10 <<j11 <<j2
+c11.jobs << j12 <<j13 <<j14
 
 Comment.destroy_all
 co1 = Comment.create({:body => "What are the specs?", :user_id => u2.id, :job_id => j1.id})
@@ -132,18 +147,43 @@ r3 = Rating.create :body => "The user was average", :score => 3, :user_id => u2.
 r4 = Rating.create :body => "Below average experience", :score => 2, :user_id => u8.id
 r5 = Rating.create :body => "I want to marry this person", :score => 5, :user_id => u6.id
 r6 = Rating.create :body => "Turned up late and still didn't do everything", :score => 1, :job_id => j2.id
-r7 = Rating.create :body => "Turned up late and still didn't do everything", :score => 1, :job_id => j1.id
-r8 = Rating.create :body => "Turned up late and still didn't do everything", :score => 1, :user_id => u2.id
+r7 = Rating.create :body => "Turned up late and still didn't do everything", :score => 2, :job_id => j1.id
+r8 = Rating.create :body => "Didn't bother turning up", :score => 1, :user_id => u2.id
+r9 = Rating.create :body => "Turned up late but I love that", :score => 4, :user_id => u2.id
+r10 = Rating.create :body => "Turned up late and still didn't do everything", :score => 1, :user_id => u2.id
+r11 = Rating.create :body => "I loved working with this person", :score => 4, :user_id => u6.id
+r12 = Rating.create :body => "I enjoyed working with this user but suggest they could be more helpful", :score => 3, :user_id => u4.id
+r13 = Rating.create :body => "The user was average", :score => 3, :user_id => u2.id
+r14 = Rating.create :body => "Below average experience", :score => 2, :user_id => u8.id
+r15 = Rating.create :body => "I want to marry this person", :score => 5, :user_id => u6.id
+r16 = Rating.create :body => "I loved working with them", :score => 4, :job_id => j2.id
+r17 = Rating.create :body => "Turned up late and still didn't do everything", :score => 2, :job_id => j1.id
+r18 = Rating.create :body => "Didn't bother turning up", :score => 1, :user_id => u2.id
+r19 = Rating.create :body => "Turned up late but I love that", :score => 4, :user_id => u2.id
+r20 = Rating.create :body => "I loved working with them", :score => 4, :user_id => u2.id
 
 j1.ratings << r1
 j2.ratings << r2
-j3.ratings << r3
-j4.ratings << r4
-j5.ratings << r5
-j6.ratings << r8
 
-u1.ratings << r7 # Employer has just rated a user
+
+u2.ratings << r7 # Employer has just rated a user
 u2.ratings << r6
+u4.ratings << r3
+u4.ratings << r4
+u6.ratings << r5
+u6.ratings << r8
+u6.ratings << r9
+u6.ratings << r10
+u2.ratings << r11
+u2.ratings << r12
+u8.ratings << r13
+u4.ratings << r14
+u8.ratings << r15
+u8.ratings << r16
+u8.ratings << r17
+u10.ratings << r18
+u10.ratings << r19
+u10.ratings << r20
 
 # THIS RELIES ON HAVING A USER_ID OR A JOB_ID ON THE RATING
   # If the create rating request came from a User show, add the job_id

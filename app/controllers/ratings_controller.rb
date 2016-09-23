@@ -24,10 +24,11 @@ class RatingsController < ApplicationController
     job = Job.find(params[:job_id])
     @rating = Rating.new(rating_params)
 
+
     if @rating.save
       @info = {
         :score => @rating.score,
-        :body => @rating.body,
+        :description => @rating.body,
         :user_id => @current_user.id,
         :job_id => job.id
       }
