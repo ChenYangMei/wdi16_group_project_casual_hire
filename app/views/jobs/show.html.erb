@@ -1,15 +1,18 @@
+<script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyArkeFE3vFJz6vtxcv22Ev_fvs0X8-HGDo'></script>
+
+
 <div class="control">
   <!-- Check for current user -->
   <% if @current_user.present? == false %>
 
-    <% elsif @current_user.id == @job.user_id %>
-      <span class="waves-effect waves-light btn" id="editWork">
-        <%= link_to "Edit work", edit_job_path( @job.id ) %>
-      </span>
+  <% elsif @current_user.id == @job.user_id %>
+    <span class="waves-effect waves-light btn" id="editWork">
+      <%= link_to "Edit work", edit_job_path( @job.id ) %>
+    </span>
 
-      <span class="waves-effect waves-light btn" id="deleteWork">
-        <%= link_to "Delete work", @job, :method => :delete, :data => { :confirm => "Are you sure?" } %>
-      </span>
+    <span class="waves-effect waves-light btn" id="deleteWork">
+      <%= link_to "Delete work", @job, :method => :delete, :data => { :confirm => "Are you sure?" } %>
+    </span>
   <% end %>
 </div>
 
@@ -32,7 +35,8 @@
 
     <% if @job.categories.count == 0 %>
       No Categories
-      <% else %>Categories: <% @job.categories.each do |b| %>
+    <% else %>Categories:
+      <% @job.categories.each do |b| %>
         <a class="button" <%= link_to(b.name, category_path(b)) %></a>
       <% end %><br>
     <% end %>
@@ -43,7 +47,9 @@
 
     <% if @job.categories.count == 0 %>
       No Categories
-      <% else %>Categories: <% @job.categories.each do |b| %>
+    <% else %>
+      Categories:
+      <% @job.categories.each do |b| %>
         <a class="button" <%= link_to(b.name, category_path(b)) %></a>
       <% end %><br>
     <% end %>
@@ -53,7 +59,6 @@
     <!-- Tweet link -->
     <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>
-
 
   <div class="col s6">
     <!-- Display Job Status -->
@@ -142,7 +147,6 @@
     <% end %>
   </div>
 </main>
-
 <hr>
 
 <div class="comments">
@@ -158,30 +162,37 @@
   </table>
 </div>
 
-
 <div id = "rating_show">
-  <% if @job.completed? && @current_user.id === @job.user.id %>
+  <!-- <%# if @job.completed? && @current_user.id === @job.user.id %> -->
     <p>
       <%= render( :partial => "user_rating" ) %>
     </p>
-  <% elsif @job.completed? && @current_user.id === @job.applicant.name %>
+  <!-- <%# elsif @job.completed? && @current_user.id === @job.applicant.name %> -->
     <p>
       <%= render( :partial => "job_rating" ) %>
     </p>
-  <% end %>
+  <%# end %>
 </div>
 
+  <%= content_tag :div, class: "lat", data: {lat: @job.latitude} do %>
+  <%end%>
+  <%= content_tag :div, class: "lng", data: {lng: @job.longitude} do %>
+  <%end%>
 
+<p id="lat_id"><%= @job.latitude %></p>
+
+<p id="lng_id"><%= @job.longitude %></p>
+
+<div id="map"></div>
 <!-- geocoder  -->
 <div class="row">
-  <div class="col s6">
-    <!-- <%#= image_tag "http://maps.google.com/maps/api/staticmap?size=850x300&sensor=false&zoom=16&markers=#{@job.latitude}%2C#{@job.longitude}",:class => "map-geocoder" %> -->
-  </div>
+
   <div class="col s6">
     <h3>Nearby Jobs</h3>
     <ul>
       <% for job in @job.nearbys(10) %>
-        <li><%= link_to job.task_title, job %> <%= job.task_location%> (<%= job.distance.round(2) %> miles)</li>
+        <li><%= link_to job.task_title, job %>
+          <%= job.task_location%> (<%= job.distance.round(2) %> miles)</li>
       <% end %>
     </ul>
   </div>

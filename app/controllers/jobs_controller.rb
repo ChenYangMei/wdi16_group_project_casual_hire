@@ -16,6 +16,15 @@ class JobsController < ApplicationController
       @job = Job.new
     end
 
+    def coordinates
+        @jobs = Job.all
+        @coordinates = []
+        @jobs.each do |j|
+            @coordinates << [j.task_title, j.latitude, j.longitude]
+        end
+    render :json => @coordinates
+    end
+
     def create
 
       job = Job.new(job_params)

@@ -2,8 +2,61 @@
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$(document).ready(function() {
+var $latitude;
+var $longitude;
+var mapArr = [];
 
+var placeMarkers = function(response) {
+  console.log(response.length);
+  for (var i = 0; i < response.length; i++){
+    marker = new google.maps.Marker({
+      map: map,
+
+      draggable: true,
+      animation: google.maps.Animation.DROP,
+      position: {
+        lat: response[i][1],
+        lng: response[i][2]},
+      label: response[i][0]
+    });
+  }
+};
+
+var getCoordinates = function() {
+  $.ajax({
+    url: "/coordinates",
+    type: 'GET',
+    format: 'JSON',
+  }).done( placeMarkers );
+};
+
+var initMap = function(lat, lng) {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {
+      lat: lat,
+      lng: lng
+    },
+    zoom: 12
+  });
+    marker = new google.maps.Marker({
+      map: map,
+      draggable: true,
+      animation: google.maps.Animation.DROP,
+      position: {
+        lat: lat,
+        lng: lng}
+    });
+  getCoordinates();
+};
+
+
+$(document).ready(function() {
+  latitude = parseFloat($("#lat_id").text());
+  longitude = parseFloat($("#lng_id").text());
+
+  initMap(latitude, longitude);
+  $("#lat_id").hide();
+  $("#lng_id").hide();
   $(".scroller").slick({
     dots: true,
     infinite: true,

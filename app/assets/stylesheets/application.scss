@@ -42,15 +42,15 @@
  }
 
 .slick-prev::before, .slick-next::before {
- color: #808080;
+  color: #808080;
 }
 
 .slick-next {
- right: -5px;
+  right: -5px;
 }
 
 .slick-prev {
- left: -5px;
+  left: -5px;
 }
 
 
@@ -76,20 +76,29 @@
    width: 100%;
  }
 
-#map {
-      height: 100%;
-    }
-    .text_field_tag, .number_field_tag, .search_by_location{
+ #map {
+    height: 400px;
+    border-radius: 16px 16px;
+    border-color: #fff;
+    border-style: solid;
+    box-shadow: 2px 2px 10px #B1B1B1;
+    margin-top: 25px;
+    border-width: 7px;
+    height: 384px;
+    width: 100%;
+  }
 
-      display: inline-block;
+  .text_field_tag, .number_field_tag, .search_by_location{
+    display: inline-block;
+  }
 
-    }
-    .text_field_tag{
+  .text_field_tag{
       width: 300px;
-    }
-    .number_field_tag {
+  }
+
+  .number_field_tag {
       width: 94px;
       padding-left: 10px;
       padding-right: 10px;
       text-align: center;
-    }
+  }
