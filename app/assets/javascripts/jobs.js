@@ -56,6 +56,7 @@ $(document).ready(function() {
   if ($("#map").length > 0) {
     initMap(latitude, longitude);
   }
+
   $("#lat_id").hide();
   $("#lng_id").hide();
   $(".scroller").slick({
