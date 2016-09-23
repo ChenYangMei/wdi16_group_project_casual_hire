@@ -53,8 +53,9 @@ var initMap = function(lat, lng) {
 $(document).ready(function() {
   latitude = parseFloat($("#lat_id").text());
   longitude = parseFloat($("#lng_id").text());
-
-  initMap(latitude, longitude);
+  if ($("#map").length > 0) {
+    initMap(latitude, longitude);
+  }
   $("#lat_id").hide();
   $("#lng_id").hide();
   $(".scroller").slick({
@@ -83,7 +84,7 @@ $(document).ready(function() {
   };
 
   var handleError = function (e, xhr) {
-    $("#offer").text("Something went wrong!")
+    $("#offer").text("Something went wrong!");
   };
 
   // Make an Offer
