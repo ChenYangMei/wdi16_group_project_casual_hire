@@ -54,7 +54,7 @@ class Job < ActiveRecord::Base
 
   # Awesome contribution by Badger the Legend! Creating an applicant method which finds the employee(returns an object) who was chosen by the employer to do the job!
   def applicant
-    User.find(Applicant.find(self.applicant_id).user_id)
+    User.find(Applicant.find(self.applicant_id).user_id) if self.applicant_id
   end
 
 end
