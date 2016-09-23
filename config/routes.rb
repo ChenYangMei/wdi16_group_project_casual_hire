@@ -30,4 +30,4 @@ Rails.application.routes.draw do
   post '/login' => 'session#create'
   delete '/logout' => 'session#destroy', :as => "logout"
 
-end
+end 
