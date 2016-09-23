@@ -1,9 +1,9 @@
 <!-- This is to rate the employee!!!! -->
 
 <!-- Including Template to show user_Ratings/review -->
-<% if @job.applicant %>
+
   <div class="rating">
-    <h6>Did <%= link_to(@job.applicant.name, user_path(@job.applicant.id)) %> do a good job?</h6>
+    <h6>Did this user <%= link_to(@job.applicant.name, user_path(@job.applicant.id)) if @job.applicant %> do a good job?</h6>
     <%= form_for(@rating, :url => rate_user_path(@job.id), remote: true, format: :json) do |f| %>
       <p>
         <%= f.label :score %>
@@ -19,4 +19,3 @@
       </p>
     <% end %>
   </div>
-<% end %>

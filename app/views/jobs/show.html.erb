@@ -1,3 +1,5 @@
+<p id="job_id"><%= @job.id %></p>
+
 <div class="control">
   <!-- Check for current user -->
   <% if @current_user.present? == false %>
@@ -123,7 +125,6 @@
         <% if @job.applicants.length > 0 && @current_user.id == @job.user.id %>
           <% if !@job.completed? %>
             <div id="select_applicant">
-              <p id="job_id"><%= @job.id %></p>
               <!-- Sending an update request to job_controller. Using remote:true to include aJax request within this form -->
               <%= form_for(@job, remote: true, format: :json) do |f| %>
               <p>
@@ -152,7 +153,7 @@
 
 
 <!-- rating -->
-<div id = "rating_show">
+<div id = "rating_show" style="<%= 'display: none;' unless @job.completed? && @current_user.id == @job.user.id %>">
   <%# if @job.completed? && @current_user.id === @job.user.id %>
     <p>
       <%= render( :partial => "user_rating" ) %>
@@ -160,8 +161,8 @@
   <%# end %>
 </div>
 
-<div id = "rating_job_show">
-  <%# if @job.completed? && @current_user.id === @job.applicant.id %>
+<div id = "rating_job_show" style="<%= 'display: none;' unless @job.completed? && @current_user.id == @job.applicant.id %>">
+  <%# if @job.completed? && @current_user.id == @job.applicant.id %>
     <p>
       <%= render( :partial => "job_rating" ) %>
     </p>
