@@ -85,7 +85,7 @@ $(document).ready(function() {
   };
 
   var handleError = function (e, xhr) {
-    $("#offer").text("Something went wrong!")
+    $("#offer").text("Something went wrong!");
   };
 
   // Make an Offer

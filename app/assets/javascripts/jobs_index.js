@@ -1,9 +1,12 @@
 
 var $card;
 $(document).ready(function() {
+  $(".latitude").hide();
+  $(".longitude").hide();
   $("#buttons button").on("click", function () {
+    console.log("clicked")
     var buttonClass = $(this).attr("class");
-    // console.log( "BUTTON CLICKED", buttonClass );
+    console.log( "BUTTON CLICKED", buttonClass );
     var selector = '.' + buttonClass;
     if ( buttonClass === "all" ) {
       selector = "*";
@@ -17,6 +20,5 @@ $(document).ready(function() {
     itemSelector: '.card',
     layoutMode: 'fitRows'
   });
-  $(".latitude").hide();
-  $(".longitude").hide();
+
 });
