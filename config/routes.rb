@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'users#index'
+  root 'jobs#index'
   resources :users
   resources :jobs, :ratings
   resources :categories, :except => [:edit]
@@ -30,4 +30,4 @@ Rails.application.routes.draw do
   post '/login' => 'session#create'
   delete '/logout' => 'session#destroy', :as => "logout"
 
-end 
+end

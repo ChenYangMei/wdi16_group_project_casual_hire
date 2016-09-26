@@ -67,6 +67,9 @@ class JobsController < ApplicationController
     end
 
     def show
+      if !@current_user
+        redirect_to login_path
+      end
       @job = Job.find params[:id]
       @applicant = Applicant.new
       @applicants = Applicant.all

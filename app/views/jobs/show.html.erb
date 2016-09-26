@@ -1,7 +1,6 @@
 <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyArkeFE3vFJz6vtxcv22Ev_fvs0X8-HGDo'></script>
 <p id="job_id"><%= @job.id %></p>
 
-
 <div class="control">
   <!-- Check for current user -->
   <% if @current_user.present? == false %>
@@ -115,11 +114,14 @@
 
         <div class="show_applicants">
           <p>
-            This job has been applied by <%= @job.applicants.length %> people
+            This job has been applied by <%= pluralize(@job.applicants.length, "user") %>
           </p>
           <% if @job.applicants.length > 0 %>
             <% @job.applicants.each do |a| %>
-              <span> <%= link_to(a.user.name, a.user) %> </span>
+              <ul>
+                <li>Applicant: <%= link_to(a.user.name, a.user) %></li>
+                <li>Description: <%= a.description %></li>
+              </ul>
             <% end %>
           <% end %>
         </div>

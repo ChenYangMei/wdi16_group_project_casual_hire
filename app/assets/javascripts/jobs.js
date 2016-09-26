@@ -2,6 +2,7 @@
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
+
 var $latitude;
 var $longitude;
 var mapArr = [];
@@ -67,9 +68,8 @@ $(document).ready(function() {
     cssEase: 'linear'
   });
 
-  $("#job_id").hide();
   $("#offer").hide();
-  // $("#rating_show").hide();
+  $("#job_id").hide();
 
   $("#makeAnOffer").on("click", function(){
     $("#offer").fadeIn(3000);
@@ -148,5 +148,12 @@ $(document).ready(function() {
   };
 
   $("#completed").on("click", completeJobStatus);
+
+
+  // Rating form handeling after submission
+  $("#new_rating").on("ajax:success", function(data){
+    var text = $("<p>").text("Thank you for rating this user!");
+    $(".rating").html(text);
+  });
 
 });
